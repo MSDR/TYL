@@ -1,0 +1,34 @@
+﻿  game.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(54): warning C4244: 'argument': conversion from 'const _Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(62): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  graphics.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\graphics.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Input.cpp
+  main.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
+  Sprite.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(33): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(33): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+game.obj : error LNK2019: unresolved external symbol _SDL_PollEvent referenced in function "private: void __thiscall Game::gameLoop(void)" (?gameLoop@Game@@AAEXXZ)
+game.obj : error LNK2019: unresolved external symbol _SDL_GetTicks referenced in function "private: void __thiscall Game::gameLoop(void)" (?gameLoop@Game@@AAEXXZ)
+game.obj : error LNK2019: unresolved external symbol _SDL_Init referenced in function "public: __thiscall Game::Game(void)" (??0Game@@QAE@XZ)
+graphics.obj : error LNK2019: unresolved external symbol _SDL_SetWindowTitle referenced in function "public: __thiscall Graphics::Graphics(void)" (??0Graphics@@QAE@XZ)
+graphics.obj : error LNK2019: unresolved external symbol _SDL_DestroyWindow referenced in function "public: __thiscall Graphics::~Graphics(void)" (??1Graphics@@QAE@XZ)
+graphics.obj : error LNK2019: unresolved external symbol _SDL_CreateWindowAndRenderer referenced in function "public: __thiscall Graphics::Graphics(void)" (??0Graphics@@QAE@XZ)
+graphics.obj : error LNK2019: unresolved external symbol _SDL_RenderClear referenced in function "public: void __thiscall Graphics::clear(void)" (?clear@Graphics@@QAEXXZ)
+graphics.obj : error LNK2019: unresolved external symbol _SDL_RenderCopy referenced in function "public: void __thiscall Graphics::blitSurface(struct SDL_Texture *,struct SDL_Rect *,struct SDL_Rect *)" (?blitSurface@Graphics@@QAEXPAUSDL_Texture@@PAUSDL_Rect@@1@Z)
+graphics.obj : error LNK2019: unresolved external symbol _SDL_RenderPresent referenced in function "public: void __thiscall Graphics::flip(void)" (?flip@Graphics@@QAEXXZ)
+graphics.obj : error LNK2019: unresolved external symbol _SDL_DestroyRenderer referenced in function "public: __thiscall Graphics::~Graphics(void)" (??1Graphics@@QAE@XZ)
+graphics.obj : error LNK2019: unresolved external symbol _IMG_Load referenced in function "public: struct SDL_Surface * __thiscall Graphics::loadImage(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loadImage@Graphics@@QAEPAUSDL_Surface@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+Sprite.obj : error LNK2019: unresolved external symbol _SDL_CreateTextureFromSurface referenced in function "public: __thiscall Sprite::Sprite(class Graphics &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,int,int,int,int,float,float)" (??0Sprite@@QAE@AAVGraphics@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHHHMM@Z)
+C:\Users\Mason\Documents\Visual Studio 2017\Projects\Grids\Debug\Grids.exe : fatal error LNK1120: 12 unresolved externals

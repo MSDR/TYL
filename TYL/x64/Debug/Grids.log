@@ -1,0 +1,110 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Grids.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  game.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(171): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(176): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(221): warning C4244: 'argument': conversion from 'const _Ty' to 'float', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(250): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(251): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(252): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(253): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(256): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(257): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(260): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(266): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(267): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(268): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(269): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(272): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(273): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(274): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(277): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(282): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(282): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(296): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(299): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(319): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(322): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(335): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(342): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(341): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(348): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(347): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(358): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(359): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(360): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(361): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(364): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(365): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(366): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(369): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(379): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(380): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(383): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(384): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(385): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(386): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(391): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(392): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(393): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(394): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(397): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(398): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(399): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(400): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(403): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(431): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(432): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(433): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(434): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(446): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(447): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(451): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(457): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(458): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(462): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\game.cpp(465): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+  graphics.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\graphics.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Input.cpp
+  main.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
+  Operators.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Sprite.cpp
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(33): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(33): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\grids\grids\sprite.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Grids.vcxproj -> C:\Users\Mason\Documents\Visual Studio 2017\Projects\Grids\x64\Debug\TYL.exe
