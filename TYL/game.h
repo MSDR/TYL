@@ -1,13 +1,16 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include "game.h"
 #include "Graphics.h"
 #include "Input.h"
 #include "Operators.h"
 #include "Sprite.h"
 
+#include "SDL_include/SDL.h"
 
 #include <algorithm>
+#include <iostream>
 #include <list>
 #include <map>
 #include <utility>
@@ -35,12 +38,12 @@ public:
 	//Updates member variables appropriately
 	void update(float elapsedTime);
 
-	void useOperator(char opr, std::pair<int, int> &gridIndices);
+	void tryOperator();
 
 	void add(const Grid& a, const Grid& b, Grid* out);
 	void subtract(const Grid& a, const Grid& b, Grid* out);
-	void flip(Grid& a);
-	void bucket(Grid& a);
+	void flip(Grid& a, Grid *out);
+	void bucket(Grid& a, Grid *out);
 
 	//Sprite sprite_;
 

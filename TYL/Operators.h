@@ -11,6 +11,8 @@ namespace operator_grids {
 	Grid flipGrid();
 
 	Grid bucketGrid();
+
+	bool isUnary(char opr);
 };
 
 #endif

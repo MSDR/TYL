@@ -24,4 +24,8 @@ namespace operator_grids {
 		bucket.data_ = { {0, 0, 0, 1, 0}, {0, 0, 0, 0, 1}, {0, 1, 1, 0, 1}, {0, 1, 1, 1, 1}, {0, 0, 1, 1, 0} };
 		return bucket;
 	}
+
+	bool isUnary(char opr) { 
+		return (opr == 'f' || opr == 'b'); 
+	}
 }
