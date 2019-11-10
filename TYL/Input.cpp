@@ -1,4 +1,4 @@
-//Globals class code courtesy of LimeOats: https://limeoats.com/
+//Input class adpated from LimeOats: https://limeoats.com/
 
 #include "Input.h"
 

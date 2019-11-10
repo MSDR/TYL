@@ -1,5 +1,3 @@
-//Globals class code courtesy of LimeOats: https://limeoats.com/
-
 #ifndef  GLOBALS_H_
 #define GLOBALS_H_
 

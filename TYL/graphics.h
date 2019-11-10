@@ -1,4 +1,4 @@
-//Sprite class code courtesy of LimeOats: https://limeoats.com/, commented by Mason Sklar [2019]
+//Graphics class code adapted from LimeOats: https://limeoats.com/
 
 #ifndef GRAPHICS_H_
 #define GRAPHICS_H_

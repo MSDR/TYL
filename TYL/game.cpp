@@ -1,5 +1,3 @@
-//Sprite class code courtesy of LimeOats: https://limeoats.com/, modified and commented by Mason Sklar [2019]
-
 #include <algorithm>?
 #include "SDL_include/SDL.h"
 
@@ -28,16 +26,6 @@ Game::~Game() {
 
 }
 
-void Game::copyFromBackup(const Game &other) {
-	//currentSelection_ = other.currentSelection_;
-	grids_ = other.grids_;
-	operators_ = other.operators_;
-	solution_ = other.solution_;
-	palette_ = other.palette_;
-	currentOperator_ = other.currentOperator_;
-	currentTiles_ = other.currentTiles_;
-}
-
 void Game::gameLoop() {
 	Graphics graphics;
 	Input input;
@@ -52,35 +40,42 @@ void Game::gameLoop() {
 	//sprite_ = Sprite(); 
 	/* Use this constructor instead: Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int sourceY, 
 									int width, int height, float posX, float posY); */
-	solution_ = Grid(4, 4);
-	solution_.data_ = { {0, 1, 2, 0}, {0, 0, 0, 0}, {1, 0, 1, 0}, {1, 0, 0, 0}};
-	operators_ = { '+', '-', 'f', '+'};
 
-	std::vector<std::vector<int>> a = { {1, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0} };
-	std::vector<std::vector<int>> b = { {0, 0, 0, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 0, 0, 1} };
-	std::vector<std::vector<int>> c = { {0, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 1, 0}, {0, 0, 0, 0} };
-	std::vector<std::vector<int>> d = { {0, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0} };
-	grids_.push_back(Grid(a));
-	grids_.push_back(Grid(b));
-	grids_.push_back(Grid(c));
-	grids_.push_back(Grid(d));
+	//Level 1 - to be loaded in a class from a file
+	{
+		solution_ = Grid(4, 4);
+		solution_.data_ = { {0, 1, 2, 0}, {0, 0, 0, 0}, {1, 0, 1, 0}, {1, 0, 0, 0}};
+		operators_ = { '+', '-', 'f', '+'};
 
-
-	palette_.first.r = 255;
-	palette_.first.g = 255;
-	palette_.first.b = 255;
-	palette_.first.a = 255;
+		std::vector<std::vector<int>> a = { {1, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0} };
+		std::vector<std::vector<int>> b = { {0, 0, 0, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 0, 0, 1} };
+		std::vector<std::vector<int>> c = { {0, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 1, 0}, {0, 0, 0, 0} };
+		std::vector<std::vector<int>> d = { {0, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0} };
+		grids_.push_back(Grid(a));
+		grids_.push_back(Grid(b));
+		grids_.push_back(Grid(c));
+		grids_.push_back(Grid(d));
 
 
-	palette_.second.r = 45;
-	palette_.second.g = 124;
-	palette_.second.b = 249;
-	palette_.second.a = 255;
 
+		palette_.first.r = 255;
+		palette_.first.g = 255;
+		palette_.first.b = 255;
+		palette_.first.a = 255;
+
+
+		palette_.second.r = 45;
+		palette_.second.g = 124;
+		palette_.second.b = 249;
+		palette_.second.a = 255;
+	}
+	
+	//Reset these with every level change
 	char currentOperator = ' ';
 	std::pair<int, int> currentGrids = std::make_pair(-1, -1);
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
+
 	//Start game loop
 	while (true) {
 		input.beginNewFrame();
@@ -96,23 +91,18 @@ void Game::gameLoop() {
 				} 
 				if (input.wasKeyPressed(SDL_SCANCODE_LEFT)) {
 					if (currentSelection_ > 0) {
-						for(int i = 1; i <= 2; ++i) {
-							if(currentSelection_ == grids_.size() && grids_.size()%2==0) //Left bound
-								currentSelection_--;
-							else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==1) //Left bound
-								currentSelection_++;
-							else if (currentSelection_ == 1)
-								currentSelection_++;
-							else if(currentSelection_%2==1)
-								currentSelection_ -= 2;
-							else 
-								currentSelection_ += 2;
+						if(currentSelection_ == grids_.size() && grids_.size()%2==0) //Left bound
+							currentSelection_--;
+						else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==1) //Left bound
+							currentSelection_++;
+						else if (currentSelection_ == 1)
+							currentSelection_++;
+						else if(currentSelection_%2==1)
+							currentSelection_ -= 2;
+						else 
+							currentSelection_ += 2;
 
-							if (currentSelection_-1 != currentGrids.first && currentSelection_-1 != currentGrids.second)
-								break;
-						}
 					} else {
-						//for(int i = 1; i <= 2; ++i) {
 							if(currentSelection_*-1 == grids_.size() && grids_.size()%2==0) //Left bound
 								currentSelection_++;
 							else if(currentSelection_*-1 == grids_.size()-1 && grids_.size()%2==1) //Left bound
@@ -123,47 +113,33 @@ void Game::gameLoop() {
 								currentSelection_ += 2;
 							else 
 								currentSelection_ -= 2;
-
-						//	if ((currentSelection_-1)*-1 != currentOperator_)
-						////		break;
-						//}
 					}
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_RIGHT)) {
 					if(currentSelection_ > 0){
-						for(int i = 1; i <= 2; ++i){
-							if(currentSelection_ == grids_.size() && grids_.size()%2==1) //Right bound
-								currentSelection_--;
-							else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==0) //Right bound
-								currentSelection_++;
-							else if (currentSelection_ == 2) 
-								currentSelection_--;
-							else if(currentSelection_%2==1)
-								currentSelection_ += 2;
-							else 
-								currentSelection_ -= 2;
+						if(currentSelection_ == grids_.size() && grids_.size()%2==1) //Right bound
+							currentSelection_--;
+						else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==0) //Right bound
+							currentSelection_++;
+						else if (currentSelection_ == 2) 
+							currentSelection_--;
+						else if(currentSelection_%2==1)
+							currentSelection_ += 2;
+						else 
+							currentSelection_ -= 2;
 
-							if (currentSelection_-1 != currentGrids.first && currentSelection_-1 != currentGrids.second)
-								break;
-						}
 					} else {
-						//for(int i = 1; i <= 2; ++i){
-							if(currentSelection_*-1 == grids_.size() && grids_.size()%2==1) //Right bound
-								currentSelection_++;
-							else if(currentSelection_*-1 == grids_.size()-1 && grids_.size()%2==0) //Right bound
-								currentSelection_--;
-							else if (currentSelection_ == -2)
-								currentSelection_++;
-							else if((currentSelection_*-1)%2==1)
-								currentSelection_ -= 2;
-							else 
-								currentSelection_ += 2;
-
-						//	if ((currentSelection_-1)*-1 != currentOperator_)
-						//		break;
-						//}
+						if(currentSelection_*-1 == grids_.size() && grids_.size()%2==1) //Right bound
+							currentSelection_++;
+						else if(currentSelection_*-1 == grids_.size()-1 && grids_.size()%2==0) //Right bound
+							currentSelection_--;
+						else if (currentSelection_ == -2)
+							currentSelection_++;
+						else if((currentSelection_*-1)%2==1)
+							currentSelection_ -= 2;
+						else 
+							currentSelection_ += 2;
 					}
-
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_UP) || input.wasKeyPressed(SDL_SCANCODE_DOWN)) {
 					if(currentSelection_ > 0) {
@@ -179,26 +155,34 @@ void Game::gameLoop() {
 					}
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_RETURN) || input.wasKeyPressed(SDL_SCANCODE_SPACE)) {
-					std::cout << "return";
-					backups_.push_back(Game(*this));
+					backups_.push_back(Game(*this)); //Add a backup to the list
 
+					//Manage currentSelection
 					if (currentSelection_ > 0) {
-						if (currentTiles_.first == -1) {
+						if (currentSelection_ - 1 == currentTiles_.first) {
+							currentTiles_.first = -1;
+						} else if (currentSelection_ - 1 == currentTiles_.second) {
+							currentTiles_.second = -1;
+						} else if (currentTiles_.first == -1) {
 							currentTiles_.first = currentSelection_-1;
 						} else if (currentTiles_.second == -1) {
 							currentTiles_.second = currentSelection_-1;							
 						}
 					} else {
-						currentOperator_ = (currentSelection_*-1) - 1;
+						if ((currentSelection_*-1) - 1 == currentOperator_)
+							currentOperator_ = -1;
+						else
+							currentOperator_ = (currentSelection_*-1) - 1;
 					}
 
+					//Use an operator if the conditions are met
 					if (currentOperator_ != -1 && currentTiles_.first != -1 && currentTiles_.second != -1) {
 						useOperator(operators_[currentOperator_], currentTiles_);
 						currentOperator_ = -1;
 						currentTiles_ = std::make_pair(-1, -1);
 					}
 				}
-				if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE) && backups_.size() > 0) { //Restore from backup -- idk if it really works lol
+				if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE) && backups_.size() > 0) { //Restore from backup
 					copyFromBackup(backups_.back());
 					backups_.pop_back();
 				}
@@ -220,6 +204,8 @@ void Game::gameLoop() {
 		int ELAPSED_TIME_MILLIS = CURRENT_TIME_MILLIS - LAST_UPDATE_TIME;
 		update(std::min(ELAPSED_TIME_MILLIS, MAX_FRAME_TIME));
 		LAST_UPDATE_TIME = CURRENT_TIME_MILLIS;
+
+		//This makes the game only redraw itself when neccessary -- a HUGE performance increase
 		if(gameUpdated) {
 			draw(graphics);
 			gameUpdated = false;
@@ -228,6 +214,7 @@ void Game::gameLoop() {
 	}//end game loop
 }
 
+//Primary draw function across game
 void Game::draw(Graphics &graphics) {
 	graphics.clear();
 	//sprite_.draw(graphics, sprite_.getX(), sprite_.getY());
@@ -236,12 +223,13 @@ void Game::draw(Graphics &graphics) {
 	SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
 	SDL_RenderFillRect(graphics.getRenderer(), NULL);
 	
-	drawGrids(graphics);
+	drawGame(graphics);
 
 	graphics.flip();
 }
 
-void Game::drawGrids(Graphics &graphics) {
+//Draws tiles, operators, and everything else needed to see the game
+void Game::drawGame(Graphics &graphics) {
 
 	SDL_SetRenderDrawColor(graphics.getRenderer(), 115, 115, 115, 255);
 	SDL_Rect r;
@@ -334,8 +322,9 @@ void Game::drawGrids(Graphics &graphics) {
 	}
 
 	//Draw currentOperator_
-	if(currentOperator_ != -1)
+	if(currentOperator_ != -1) {
 		drawOperator(graphics, 960-5*globals::SPRITE_SCALE, 540+5*globals::SPRITE_SCALE, operators_[currentOperator_]);
+	}
 
 
 	//Draw currentTiles_
@@ -373,83 +362,64 @@ void Game::drawGrids(Graphics &graphics) {
 	}
 }
 
-//x, y should be the coords of the upper-left corner of the horizontal white box in the operator's outline
+//Draws an operator and the operator art inside of it
+//x, y: upper-left corner of the horizontal white box in the operator's outline
 //if opr=='_', draws an outline instead of the operator
 void Game::drawOperator(Graphics &graphics, int x, int y, char opr) {
 	if (opr == '_') {
 		drawOperatorOutline(graphics, x, y);
 		return;
 	}
+
 	SDL_Rect r;
-	r.x = x;
-	r.y = y;
-	r.w = 11*globals::SPRITE_SCALE;
-	r.h = 7*globals::SPRITE_SCALE;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-	r.x += 2*globals::SPRITE_SCALE;
-	r.y -= 1*globals::SPRITE_SCALE;
-	r.w = 7*globals::SPRITE_SCALE;
-	r.h = 9*globals::SPRITE_SCALE;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
+	//Draw operator's border 
+	{
+		r.x = x;
+		r.y = y;
+		r.w = 11*globals::SPRITE_SCALE;
+		r.h = 7*globals::SPRITE_SCALE;
+		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-	SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
+		r.x += 2*globals::SPRITE_SCALE;
+		r.y -= 1*globals::SPRITE_SCALE;
+		r.w = 7*globals::SPRITE_SCALE;
+		r.h = 9*globals::SPRITE_SCALE;
+		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-	r.x += globals::SPRITE_SCALE;
-	r.y += globals::SPRITE_SCALE;
-	r.w = 5*globals::SPRITE_SCALE;
-	r.h = 7*globals::SPRITE_SCALE;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
+		SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
 
-	r.x -= globals::SPRITE_SCALE;
-	r.y += globals::SPRITE_SCALE;
-	r.w = 7*globals::SPRITE_SCALE;
-	r.h = 5*globals::SPRITE_SCALE;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
+		r.x += globals::SPRITE_SCALE;
+		r.y += globals::SPRITE_SCALE;
+		r.w = 5*globals::SPRITE_SCALE;
+		r.h = 7*globals::SPRITE_SCALE;
+		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-	r.x += globals::SPRITE_SCALE;
-	Grid oGrid(5, 5);
-	if (opr == '+') {
-		oGrid = operator_grids::plusGrid();
-	} else if (opr == '-') {
-		oGrid = operator_grids::minusGrid();
-	} else if (opr == 'f') {
-		oGrid = operator_grids::flipGrid();
-	} else if (opr == 'b') {
-		oGrid = operator_grids::bucketGrid();
+		r.x -= globals::SPRITE_SCALE;
+		r.y += globals::SPRITE_SCALE;
+		r.w = 7*globals::SPRITE_SCALE;
+		r.h = 5*globals::SPRITE_SCALE;
+		SDL_RenderFillRect(graphics.getRenderer(), &r);
 	}
 
-	drawGrid(graphics, oGrid, r.x, r.y);
+	//Draw the operator's art
+	{
+		r.x += globals::SPRITE_SCALE;
+		Grid oGrid(5, 5);
+		if (opr == '+') {
+			oGrid = operator_grids::plusGrid();
+		} else if (opr == '-') {
+			oGrid = operator_grids::minusGrid();
+		} else if (opr == 'f') {
+			oGrid = operator_grids::flipGrid();
+		} else if (opr == 'b') {
+			oGrid = operator_grids::bucketGrid();
+		}
+		drawGrid(graphics, oGrid, r.x, r.y);
+	}
 }
 
-void Game::drawTileOutline(Graphics & graphics, int x, int y, int w, int h) {
-	SDL_Rect r;
-
-	r.x = x;
-	r.y = y;
-	r.w = w;
-	r.h = h;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
-
-	SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
-
-	r.x += 2 * globals::SPRITE_SCALE;
-	r.w -= 4 * globals::SPRITE_SCALE;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
-
-	r.x = x;
-	r.y += 2 * globals::SPRITE_SCALE;
-	r.w = w;
-	r.h -= 4 * globals::SPRITE_SCALE;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
-
-	r.x = x + globals::SPRITE_SCALE;
-	r.y = y + globals::SPRITE_SCALE;
-	r.w = w - 2 * globals::SPRITE_SCALE;
-	r.h = h - 2 * globals::SPRITE_SCALE;
-	SDL_RenderFillRect(graphics.getRenderer(), &r);
-}
-
+//Draws a placeholder operator outline -- for use when an operator is entered
 void Game::drawOperatorOutline(Graphics & graphics, int x, int y) {
 	SDL_Rect r;
 
@@ -486,29 +456,10 @@ void Game::drawOperatorOutline(Graphics & graphics, int x, int y) {
 	SDL_RenderFillRect(graphics.getRenderer(), &r);
 }
 
-void Game::drawGrid(Graphics &graphics, const Grid &grid, const int x, const int y) {
-	for (int i = 0; i < grid.width_; ++i) {
-		for (int j = 0; j < grid.height_; ++j) {
-			int pixel = grid.data_[j][i];
-			if (pixel == 0)
-				continue;
-
-			if (pixel == 1)
-				SDL_SetRenderDrawColor(graphics.getRenderer(), palette_.first.r, palette_.first.g, palette_.first.b, palette_.first.a);
-			if (pixel == 2)
-				SDL_SetRenderDrawColor(graphics.getRenderer(), palette_.second.r, palette_.second.g, palette_.second.b, palette_.second.a);
-
-			SDL_Rect gridPoint;
-			gridPoint.x = x + (i*globals::SPRITE_SCALE);
-			gridPoint.y = y + (j*globals::SPRITE_SCALE);
-			gridPoint.w = globals::SPRITE_SCALE;
-			gridPoint.h = globals::SPRITE_SCALE;
-
-			SDL_RenderFillRect(graphics.getRenderer(), &gridPoint);
-		}
-	}
-}
-
+//Draws a tile and the grid art inside of it
+//x: upper-left corner of the tile's border
+//y: upper-left corner of the tile's border
+//if grid.data_[0][0] == -1, draws a tile outline instead of a tile
 void Game::drawTile(Graphics & graphics, int x, int y, const Grid &grid) {
 	if (grid.data_[0][0] == -1) {
 		drawTileOutline(graphics, x, y, (grid.width_+4)*globals::SPRITE_SCALE, (grid.height_+4)*globals::SPRITE_SCALE);
@@ -540,14 +491,69 @@ void Game::drawTile(Graphics & graphics, int x, int y, const Grid &grid) {
 	drawGrid(graphics, grid, x+2*globals::SPRITE_SCALE, y+2*globals::SPRITE_SCALE);
 }
 
-void Game::update(float elapsedTime) {
-	//sprite_.update(elapsedTime);
+//Draws a placeholder tile outline -- for use when a tile is entered
+void Game::drawTileOutline(Graphics & graphics, int x, int y, int w, int h) {
+	SDL_Rect r;
 
+	r.x = x;
+	r.y = y;
+	r.w = w;
+	r.h = h;
+	SDL_RenderFillRect(graphics.getRenderer(), &r);
+
+	SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
+
+	r.x += 2 * globals::SPRITE_SCALE;
+	r.w -= 4 * globals::SPRITE_SCALE;
+	SDL_RenderFillRect(graphics.getRenderer(), &r);
+
+	r.x = x;
+	r.y += 2 * globals::SPRITE_SCALE;
+	r.w = w;
+	r.h -= 4 * globals::SPRITE_SCALE;
+	SDL_RenderFillRect(graphics.getRenderer(), &r);
+
+	r.x = x + globals::SPRITE_SCALE;
+	r.y = y + globals::SPRITE_SCALE;
+	r.w = w - 2 * globals::SPRITE_SCALE;
+	r.h = h - 2 * globals::SPRITE_SCALE;
+	SDL_RenderFillRect(graphics.getRenderer(), &r);
 }
 
+//Draws the grid art inside a tile
+void Game::drawGrid(Graphics &graphics, const Grid &grid, const int x, const int y) {
+	for (int i = 0; i < grid.width_; ++i) {
+		for (int j = 0; j < grid.height_; ++j) {
+			int pixel = grid.data_[j][i];
+			if (pixel == 0)
+				continue;
+
+			if (pixel == 1)
+				SDL_SetRenderDrawColor(graphics.getRenderer(), palette_.first.r, palette_.first.g, palette_.first.b, palette_.first.a);
+			if (pixel == 2)
+				SDL_SetRenderDrawColor(graphics.getRenderer(), palette_.second.r, palette_.second.g, palette_.second.b, palette_.second.a);
+
+			SDL_Rect gridPoint;
+			gridPoint.x = x + (i*globals::SPRITE_SCALE);
+			gridPoint.y = y + (j*globals::SPRITE_SCALE);
+			gridPoint.w = globals::SPRITE_SCALE;
+			gridPoint.h = globals::SPRITE_SCALE;
+
+			SDL_RenderFillRect(graphics.getRenderer(), &gridPoint);
+		}
+	}
+}
+
+
+void Game::update(float elapsedTime) {
+	//sprite_.update(elapsedTime);
+}
+
+//Uses whatever operators and tiles are currently entered
 void Game::useOperator(char opr, std::pair<int, int> &gridIndices) {
 	std::cout << "useoperator " << opr << std::endl;
 
+	//Plus (+) operator
 	if (opr == '+' && std::find(operators_.begin(), operators_.end(), '+') != operators_.end()){
 		std::cout << "plus\n";
 		//Set up iterators
@@ -573,6 +579,8 @@ void Game::useOperator(char opr, std::pair<int, int> &gridIndices) {
 		grids_ = tGrids;
 		tGrids.clear();
 	}
+
+	//Minus (-) operator
 	if (opr == '-'&& std::find(operators_.begin(), operators_.end(), '-') != operators_.end()){
 		//Set up iterators
 		std::vector<Grid>::iterator first = grids_.begin();
@@ -598,6 +606,7 @@ void Game::useOperator(char opr, std::pair<int, int> &gridIndices) {
 		tGrids.clear();
 	}
 	
+	//TO-DO: flip and bucket
 	
 }
 
@@ -611,7 +620,7 @@ void Game::add(const Grid& a, const Grid& b, Grid* out) {
 	}
 }
 
-//Subtracts grid a from b (absolutely, i.e. 1-2 = 1) into out
+//Subtracts grid a from b absolutely (i.e. 1-2 = 1) into out
 void Game::subtract(const Grid &a, const Grid &b, Grid* out){
 	for(int i = 0; i < a.data_.size(); ++i){
 		for(int j = 0; j < a.data_.size(); ++j){
@@ -641,3 +650,13 @@ void Game::bucket(Grid &a){
 	} 
 }
 
+//Loads the most previous backup
+void Game::copyFromBackup(const Game &other) {
+	//currentSelection_ = other.currentSelection_;
+	grids_ = other.grids_;
+	operators_ = other.operators_;
+	solution_ = other.solution_;
+	palette_ = other.palette_;
+	currentOperator_ = other.currentOperator_;
+	currentTiles_ = other.currentTiles_;
+}

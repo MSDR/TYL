@@ -1,4 +1,4 @@
-//Sprite class code courtesy of LimeOats: https://limeoats.com/, commented by Mason Sklar [2019]
+//Input class code adapted from LimeOats: https://limeoats.com/
 
 #ifndef INPUT_H_
 #define INPUT_H_

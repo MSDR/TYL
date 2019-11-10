@@ -1,5 +1,3 @@
-//Sprite class code courtesy of LimeOats: https://limeoats.com/, modified and commented by Mason Sklar [2019]
-
 #ifndef GAME_H_
 #define GAME_H_
 
@@ -22,18 +20,17 @@ public:
 
 	void copyFromBackup(const Game &other);
 
-//below should be private but having them public makes a copy constructor a lot easier lol
 	void gameLoop();
 
 	//Draws all Sprites
 	void draw(Graphics &graphics);
 
-	void drawGrids(Graphics &graphics);
-	void drawGrid(Graphics &graphics, const Grid &grid, const int x, const int y);
-	void drawTile(Graphics &graphics, int x, int y, const Grid &grid);
+	void drawGame(Graphics &graphics);
 	void drawOperator(Graphics &graphics, int x, int y, char opr);
-	void drawTileOutline(Graphics &graphics, int x, int y, int w, int h);
 	void drawOperatorOutline(Graphics &graphics, int x, int y);
+	void drawTile(Graphics &graphics, int x, int y, const Grid &grid);
+	void drawTileOutline(Graphics &graphics, int x, int y, int w, int h);
+	void drawGrid(Graphics &graphics, const Grid &grid, const int x, const int y);
 
 	//Updates member variables appropriately
 	void update(float elapsedTime);

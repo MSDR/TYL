@@ -1,4 +1,4 @@
-//Sprite class code courtesy of LimeOats: https://limeoats.com/, modified and commented by Mason Sklar [2019]
+//Sprite class code adapted from LimeOats: https://limeoats.com/
 
 #ifndef SPRITE_H_
 #define SPRITE_H_

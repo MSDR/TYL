@@ -1,4 +1,4 @@
-//Rectangle class code courtesy of LimeOats: https://limeoats.com/
+//Rectangle class code adpated from LimeOats: https://limeoats.com/
 
 #ifndef RECTANGLE_H_
 #define RECTANGLE_H_
