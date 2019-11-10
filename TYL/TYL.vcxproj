@@ -145,6 +145,14 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\artdemo.pyxel" />
+    <None Include="Images\layout.pyxel" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\layout.png" />
+    <Image Include="Images\Promo.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

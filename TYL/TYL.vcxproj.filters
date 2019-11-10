@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="game.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Operators.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Operators.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{d30ce3d1-c9b9-484a-8e15-227e0ff31b97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CPPs">
+      <UniqueIdentifier>{0d8398b9-c6e2-469c-a4dc-9dc87a6dc26e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{1bfb0c7f-8cf2-45ca-885b-037037e391e5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\artdemo.pyxel">
+      <Filter>Images</Filter>
+    </None>
+    <None Include="Images\layout.pyxel">
+      <Filter>Images</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\layout.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Images\Promo.png">
+      <Filter>Images</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

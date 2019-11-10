@@ -14,97 +14,91 @@ c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(221): warn
           [
               _Ty=int
           ]
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(250): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(251): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(252): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(253): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(256): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(254): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(257): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(260): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(266): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(258): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(261): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(267): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(268): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(269): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(272): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(273): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(270): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(273): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(274): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(277): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(282): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(282): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(296): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(275): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(278): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(283): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(283): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(299): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(319): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(322): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(335): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(342): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(341): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(348): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(347): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(358): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(359): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(302): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(322): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(325): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(338): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(346): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(345): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(352): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(351): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(360): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(361): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(364): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(365): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(366): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(369): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(379): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(380): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(383): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(384): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(385): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(362): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(363): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(366): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(367): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(368): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(371): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(386): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(391): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(392): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(387): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(390): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(391): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(392): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(393): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(394): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(397): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(398): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(399): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(399): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(400): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(403): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(431): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(432): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(433): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(434): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(401): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(404): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(405): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(406): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(407): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(410): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(436): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(437): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(441): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(443): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(446): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(447): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(451): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(457): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(448): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(449): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(458): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(459): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(462): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(465): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
-  graphics.cpp
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\graphics.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Input.cpp
-  main.cpp
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
-  Operators.cpp
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Sprite.cpp
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(11): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(12): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(80): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\sprite.cpp(26): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\sprite.cpp(33): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\sprite.cpp(33): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\sprite.cpp(46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(463): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(464): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(465): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(470): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(471): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(472): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(473): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(476): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(477): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(478): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(479): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(482): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(483): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(484): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(485): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(502): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(503): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(504): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(505): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(514): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(521): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(522): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(526): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(532): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(533): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(537): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(540): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
   TYL.vcxproj -> C:\Users\Mason\Documents\Visual Studio 2017\Projects\TYL\x64\Debug\TYL.exe

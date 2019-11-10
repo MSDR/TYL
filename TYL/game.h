@@ -8,10 +8,11 @@
 #include "Operators.h"
 #include "Sprite.h"
 
+
 #include <algorithm>
 #include <list>
 #include <map>
-
+#include <utility>
 
 class Game {
 public:
@@ -31,6 +32,8 @@ public:
 	void drawGrid(Graphics &graphics, const Grid &grid, const int x, const int y);
 	void drawTile(Graphics &graphics, int x, int y, const Grid &grid);
 	void drawOperator(Graphics &graphics, int x, int y, char opr);
+	void drawTileOutline(Graphics &graphics, int x, int y, int w, int h);
+	void drawOperatorOutline(Graphics &graphics, int x, int y);
 
 	//Updates member variables appropriately
 	void update(float elapsedTime);
