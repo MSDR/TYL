@@ -19,6 +19,9 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>CPPs</Filter>
     </ClCompile>
+    <ClCompile Include="level.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -40,6 +43,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
