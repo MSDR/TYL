@@ -10,7 +10,6 @@ namespace globals {
 	const int SCREEN_HEIGHT = 1080/SPRITE_SCALE;
 }
 
-
 namespace sides {
 	enum Side {
 		TOP,
@@ -81,9 +80,4 @@ struct Grid {
 		return (width_ == a.width_ && height_ == a.height_);
 	}
 };
-
-
-
-
 #endif GLOBALS_H_
-
