@@ -12,6 +12,8 @@ namespace operator_grids {
 
 	Grid bucketGrid();
 
+	Grid duplicateGrid();
+
 	bool isUnary(char opr);
 };
 

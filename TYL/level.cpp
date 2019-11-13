@@ -437,6 +437,8 @@ void Level::drawOperator(Graphics &graphics, int x, int y, char opr) {
 			oGrid = operator_grids::flipGrid();
 		} else if (opr == 'b') {
 			oGrid = operator_grids::bucketGrid();
+		} else if (opr == 'd') {
+			oGrid = operator_grids::duplicateGrid();
 		}
 		drawGrid(graphics, oGrid, r.x, r.y);
 	}
@@ -690,6 +692,23 @@ void Level::tryOperator() {
 		currentTiles_ = std::make_pair(-1, -1);
 	}
 
+	//Duplicate (d) operator
+	if (gridIndices.first != -1 &&
+		opr == 'd' && std::find(operators_.begin(), operators_.end(), 'd') != operators_.end()) {
+		Grid first = grids_[gridIndices.first];
+
+		//Create the new Grid
+		Grid* outGrid = new Grid(first.width_, first.height_);
+
+		duplicate(first, outGrid);
+
+		grids_.push_back(*outGrid);
+		operators_.erase(std::find(operators_.begin(), operators_.end(), 'd'));
+
+		currentOperator_ = -1;
+		currentTiles_ = std::make_pair(-1, -1);
+	}
+
 	//TO-DO: flip and bucket
 
 }
@@ -723,6 +742,9 @@ void Level::inputDown() {
 }
 
 void Level::inputLeft() {
+	if (name_ == "menu") 
+		return;
+
 	if (currentSelection_ > 0) {
 		if(currentSelection_ == grids_.size() && grids_.size()%2==0) //Left bound
 			currentSelection_--;
@@ -750,6 +772,9 @@ void Level::inputLeft() {
 }
 
 void Level::inputRight() {
+	if (name_ == "menu") 
+		return;
+
 	if(currentSelection_ > 0){
 		if(currentSelection_ == grids_.size() && grids_.size()%2==1) //Right bound
 			currentSelection_--;
@@ -809,8 +834,8 @@ void Level::inputReturn() {
 
 //Merges grids a and b into out
 void Level::add(const Grid& a, const Grid& b, Grid* out) {
-	for(int i = 0; i < a.data_.size(); ++i){
-		for(int j = 0; j < a.data_.size(); ++j){
+	for(int i = 0; i < a.height_; ++i){
+		for(int j = 0; j < a.width_; ++j){
 			(*out).data_[i][j] = a.data_[i][j] + b.data_[i][j];
 			if((*out).data_[i][j] > 2) (*out).data_[i][j] = 2;
 		}
@@ -819,8 +844,8 @@ void Level::add(const Grid& a, const Grid& b, Grid* out) {
 
 //Subtracts grid a from b absolutely (i.e. 1-2 = 1) into out
 void Level::subtract(const Grid &a, const Grid &b, Grid* out){
-	for(int i = 0; i < a.data_.size(); ++i){
-		for(int j = 0; j < a.data_.size(); ++j){
+	for(int i = 0; i < a.height_; ++i){
+		for(int j = 0; j < a.width_; ++j){
 			int sum = (a.data_[i][j] - b.data_[i][j]);
 			if(sum < 0) sum *= -1;
 			(*out).data_[i][j] = sum;
@@ -830,8 +855,8 @@ void Level::subtract(const Grid &a, const Grid &b, Grid* out){
 
 //Flips any 1s to 2s, or 2s to 1s, into out
 void Level::flip(Grid &a, Grid* out){
-	for(int i = 0; i < a.data_.size(); ++i){
-		for(int j = 0; j < a.data_.size(); ++j){
+	for(int i = 0; i < a.height_; ++i){
+		for(int j = 0; j < a.width_; ++j){
 			if(a.data_[i][j] == 1) (*out).data_[i][j] = 2;
 			else if(a.data_[i][j] == 2) (*out).data_[i][j] = 1;
 		}
@@ -840,12 +865,16 @@ void Level::flip(Grid &a, Grid* out){
 
 //Buckets any 0s to 1s, in a
 void Level::bucket(Grid &a, Grid *out){
-	for(int i = 0; i < a.data_.size(); ++i){
-		for(int j = 0; j < a.data_.size(); ++j){
+	for(int i = 0; i < a.height_; ++i){
+		for(int j = 0; j < a.width_; ++j){
 			(*out).data_[i][j] = a.data_[i][j];
 			if(a.data_[i][j] == 0) (*out).data_[i][j] = 1;
 		}
 	} 
+}
+
+void Level::duplicate(Grid &a, Grid *out){
+	out->data_ = a.data_;
 }
 
 //Loads the most previous backup
@@ -861,3 +890,11 @@ void Level::undo() {
 
 	backups_.pop_back();
 }
+
+
+
+
+
+
+
+//

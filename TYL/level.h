@@ -57,6 +57,7 @@ private:
 	void subtract(const Grid& a, const Grid& b, Grid* out);
 	void flip(Grid& a, Grid *out);
 	void bucket(Grid& a, Grid *out);
+	void duplicate(Grid& a, Grid *out);
 
 	std::string name_;
 

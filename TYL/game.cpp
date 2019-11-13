@@ -42,8 +42,8 @@ void Game::gameLoop() {
 	//Start game loop
 	while (true) {
 		input.beginNewFrame();
-
-		if (SDL_PollEvent(&event)) {
+		
+		if (SDL_PollEvent(&event) && SDL_WaitEvent(&event) != 0) {
 			if (event.type == SDL_KEYDOWN) {
 				if (event.key.repeat == 0) {
 					input.keyDownEvent(event);
@@ -68,7 +68,7 @@ void Game::gameLoop() {
 						level_.inputReturn();
 						if(level_.getName()=="menu"){
 							if (level_.getCurrentSelection() == 1) {
-								level_ = Level("0_0.txt");
+								level_ = Level("0_2.txt");
 							} else if (level_.getCurrentSelection() == 1) {
 								level_ = Level("options");
 							} else if (level_.getCurrentSelection() == 3) {

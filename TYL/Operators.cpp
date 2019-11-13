@@ -3,13 +3,13 @@
 namespace operator_grids {
 	Grid plusGrid(){
 		Grid plus(5, 5);
-		plus.data_ = { {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0}, {1, 1, 1, 1, 1}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0} };
+		plus.data_ = { {0, 0, 2, 0, 0}, {0, 0, 2, 0, 0}, {2, 2, 2, 1, 1}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0} };
 		return plus;
 	}
 
 	Grid minusGrid(){
 		Grid minus(5, 5);
-		minus.data_ = { {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {1, 1, 1, 1, 1}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0} };
+		minus.data_ = { {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {2, 2, 2, 1, 1}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0} };
 		return minus;
 	}
 
@@ -25,7 +25,13 @@ namespace operator_grids {
 		return bucket;
 	}
 
+	Grid duplicateGrid() {
+		Grid dup(5, 5);
+		dup.data_ = { {0, 1, 1, 1, 0}, {0, 1, 0, 0, 0}, {1, 1, 0, 0, 0}, { 0, 1, 0, 0, 0}, {0, 1, 1, 1, 0} };
+		return dup;
+	}
+
 	bool isUnary(char opr) { 
-		return (opr == 'f' || opr == 'b'); 
+		return (opr == 'f' || opr == 'b' || opr == 'd'); 
 	}
 }
