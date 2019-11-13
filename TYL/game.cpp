@@ -68,7 +68,7 @@ void Game::gameLoop() {
 						level_.inputReturn();
 						if(level_.getName()=="menu"){
 							if (level_.getCurrentSelection() == 1) {
-								level_ = Level("0_0");
+								level_ = Level("0_0.txt");
 							} else if (level_.getCurrentSelection() == 1) {
 								level_ = Level("options");
 							} else if (level_.getCurrentSelection() == 3) {

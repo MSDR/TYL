@@ -8,8 +8,9 @@
 #include "SDL_include/SDL.h"
 
 #include <iostream>
-#include <istream>
+#include <fstream>
 #include <list>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -17,6 +18,11 @@ class Level {
 public:
 	Level() : name_("menu") { loadLevel(); }
 	Level(std::string name) : name_(name) { loadLevel(); }
+	Level(const Level &level) : 
+		grids_(level.grids_),
+		operators_(level.operators_), 
+		currentOperator_(level.currentOperator_), 
+		currentTiles_(level.currentTiles_) {}
 
 	bool loadLevel();
 

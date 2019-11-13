@@ -6,9 +6,94 @@ bool Level::loadLevel() {
 	currentTiles_ = std::make_pair(-1, -1);
 	currentOperator_ = -1;
 
+	if (name_ == "menu") {
+		palette_.first.r = 255;
+		palette_.first.g = 255;
+		palette_.first.b = 255;
+		palette_.first.a = 255;
+
+		palette_.second.r = 45;
+		palette_.second.g = 124;
+		palette_.second.b = 249;
+		palette_.second.a = 255;
+
+		return true;
+	}
+
+	//Open and validate inputReader
+	std::ifstream inputReader("Levels/"+name_); 
+	if (!inputReader.good()) {
+		return false;
+	}
+
+	std::string line = "";
+	std::string word = "";
+
+	//lineReader used to access individual words in a line
+	std::istringstream lineReader(line);
+
+	//Read in operators
+	std::getline(inputReader, line);
+	int linePos = 0;
+	while (linePos <= line.size() - 1) {
+		char opr = line[linePos];
+		if (opr == ' ') break;
+		operators_.push_back(opr);
+		linePos += 2;
+	}
+
+	std::getline(inputReader, line);
+
+	//Read in palette
+	std::getline(inputReader, line);
+	lineReader.str(line);
+	lineReader >> word;
+	palette_.first.r = std::stoi(word);
+	lineReader >> word;
+	palette_.first.g = std::stoi(word);
+	lineReader >> word;
+	palette_.first.b = std::stoi(word);
+	lineReader >> word;
+	palette_.first.a = std::stoi(word);
+
+	lineReader.clear();
+
+	std::getline(inputReader, line);
+	lineReader.str(line);
+	lineReader >> word;
+	palette_.second.r = std::stoi(word);
+	lineReader >> word;
+	palette_.second.g = std::stoi(word);
+	lineReader >> word;
+	palette_.second.b = std::stoi(word);
+	lineReader >> word;
+	palette_.second.a = std::stoi(word);
+
+	std::getline(inputReader, line);
+
+	std::vector<std::vector<int> > data;
+	linePos = 0;
+	//Read data from input text line-by-line
+	while (std::getline(inputReader, line)) {
+		if (line[0] == '>') {
+			linePos = 0;
+			if (solution_.data_.empty())
+				solution_ = Grid(data);
+			else 
+				grids_.push_back(Grid(data));
+
+			data.clear();
+			continue;
+		}
+		data.push_back(std::vector<int>());
+		for (size_t i = 0; i < line.size(); ++i) {
+			data[linePos].push_back((int)(line[i])-48);
+		}
+		linePos++;
+	}
 
 	//Level 1 - to be loaded in a class from a file
-	{
+	/*{
 		solution_ = Grid(4, 4);
 		solution_.data_ = { {2, 0, 0, 2}, {0, 2, 2, 0}, {0, 2, 2, 0}, {2, 0, 0, 2}};
 		operators_ = { '+', 'f', '-', '+'};
@@ -31,7 +116,7 @@ bool Level::loadLevel() {
 		palette_.second.g = 124;
 		palette_.second.b = 249;
 		palette_.second.a = 255;
-	}
+	}*/
 	return true;
 }
 
@@ -146,7 +231,7 @@ void Level::drawLevel(Graphics &graphics) {
 				540+5*globals::SPRITE_SCALE - (grids_[currentTiles_.first].height_%2==0 ? .5 : 1)*globals::SPRITE_SCALE, 
 				grids_[currentTiles_.first]);
 		}
-
+		SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
 		if (currentTiles_.second != -1) {
 			drawTile(graphics, 960+7*globals::SPRITE_SCALE, 
 				540+5*globals::SPRITE_SCALE - (grids_[currentTiles_.second].height_%2==0 ? .5 : 1)*globals::SPRITE_SCALE, 
@@ -239,9 +324,9 @@ void Level::drawMenu(Graphics &graphics) {
 		puzzleSelect.data_ = 
 		{
 			{ 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
-		{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0 },
-		{ 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0 },
-		{ 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0 }
+			{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0 },
+			{ 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0 },
+			{ 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0 }
 		};
 		drawTile(graphics, 960-26.5*globals::SPRITE_SCALE, 540 - 27*globals::SPRITE_SCALE, puzzleSelect);
 	}
@@ -256,11 +341,11 @@ void Level::drawMenu(Graphics &graphics) {
 		options.data_ = 
 		{
 			{ 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
-		{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 },
-		{ 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1 },
-		{ 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1 }
+			{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0 },
+			{ 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1 },
+			{ 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1 }
 		};
-		drawTile(graphics, 960-15.5*globals::SPRITE_SCALE, 540 - 12*globals::SPRITE_SCALE, options);
+		drawTile(graphics, 960-15.5*globals::SPRITE_SCALE, 540 - 11.5*globals::SPRITE_SCALE, options);
 	}
 
 	//Draw QUIT
@@ -273,11 +358,30 @@ void Level::drawMenu(Graphics &graphics) {
 		quit.data_ = 
 		{          
 			{ 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1 },
-		{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 },
-		{ 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 },
-		{ 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0 }
+			{ 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 },
+			{ 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 },
+			{ 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0 }
 		};
 		drawTile(graphics, 960- 9.5*globals::SPRITE_SCALE, 540 + 5*globals::SPRITE_SCALE, quit);
+	}
+
+	//Draw TYL
+	{
+		if(4==currentSelection_)
+			SDL_SetRenderDrawColor(graphics.getRenderer(), 45, 125, 249, 255);
+		else
+			SDL_SetRenderDrawColor(graphics.getRenderer(), 115, 115, 115, 255);
+		solution_.width_ = 9;
+		solution_.height_ = 4;
+		solution_.data_ = 
+		{
+			{ 1, 1, 1, 2, 0, 2, 1, 0, 0 },
+			{ 0, 1, 0, 2, 0, 2, 1, 0, 0 },
+			{ 0, 1, 0, 2, 2, 2, 1, 0, 0 },
+			{ 0, 1, 0, 0, 2, 0, 1, 1, 1 }
+		};
+		drawTile(graphics, 960-solution_.width_*.5*globals::SPRITE_SCALE - (solution_.width_%2==1 ? 2 : 1.5)*globals::SPRITE_SCALE, 
+			540+20*globals::SPRITE_SCALE, solution_);
 	}
 }
 
@@ -472,12 +576,9 @@ void Level::tryOperator() {
 	char opr = operators_[currentOperator_];
 	std::pair<int, int> gridIndices = currentTiles_;
 
-	std::cout << "useoperator " << opr << std::endl;
-
 	//Plus (+) operator
 	if (gridIndices.first != -1 && gridIndices.second != -1 &&
 		opr == '+' && std::find(operators_.begin(), operators_.end(), '+') != operators_.end()){
-		std::cout << "plus\n";
 		//Set up iterators
 		std::vector<Grid>::iterator first = grids_.begin();
 		std::vector<Grid>::iterator second = grids_.begin();
@@ -596,7 +697,7 @@ void Level::tryOperator() {
 void Level::inputUp() {
 	if(name_=="menu"){
 		currentSelection_--;
-		if (currentSelection_ == 0) currentSelection_ = 3;
+		if (currentSelection_ == 0) currentSelection_ = 4;
 	} else {
 		if(currentSelection_ > 0) {
 			if (currentSelection_ > operators_.size()) {
@@ -615,7 +716,7 @@ void Level::inputUp() {
 void Level::inputDown() {
 	if(name_ == "menu"){
 		currentSelection_++;
-		if (currentSelection_ == 4) currentSelection_ = 1;
+		if (currentSelection_ == 5) currentSelection_ = 1;
 	} else {
 		inputUp(); //Functionally identical during a game since it swaps btw two values
 	}
@@ -635,9 +736,9 @@ void Level::inputLeft() {
 			currentSelection_ += 2;
 
 	} else {
-		if(currentSelection_*-1 == grids_.size() && grids_.size()%2==0) //Left bound
+		if(currentSelection_*-1 == operators_.size() && operators_.size()%2==0) //Left bound
 			currentSelection_++;
-		else if(currentSelection_*-1 == grids_.size()-1 && grids_.size()%2==1) //Left bound
+		else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==1) //Left bound
 			currentSelection_--;
 		else if (currentSelection_ == -1)
 			currentSelection_--;
@@ -662,9 +763,9 @@ void Level::inputRight() {
 			currentSelection_ -= 2;
 
 	} else {
-		if(currentSelection_*-1 == grids_.size() && grids_.size()%2==1) //Right bound
+		if(currentSelection_*-1 == operators_.size() && operators_.size()%2==1) //Right bound
 			currentSelection_++;
-		else if(currentSelection_*-1 == grids_.size()-1 && grids_.size()%2==0) //Right bound
+		else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==0) //Right bound
 			currentSelection_--;
 		else if (currentSelection_ == -2)
 			currentSelection_++;
@@ -755,8 +856,6 @@ void Level::undo() {
 	//currentSelection_ = other.currentSelection_;
 	grids_ = other.grids_;
 	operators_ = other.operators_;
-	solution_ = other.solution_;
-	palette_ = other.palette_;
 	currentOperator_ = other.currentOperator_;
 	currentTiles_ = other.currentTiles_;
 

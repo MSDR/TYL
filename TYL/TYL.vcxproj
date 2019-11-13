@@ -155,6 +155,10 @@
     <Image Include="Images\layout.png" />
     <Image Include="Images\Promo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\0_0.txt" />
+    <Text Include="Levels\readme.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

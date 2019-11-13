@@ -59,6 +59,9 @@
     <Filter Include="Images">
       <UniqueIdentifier>{1bfb0c7f-8cf2-45ca-885b-037037e391e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{db383f13-ddb0-47a0-b8f1-6ce976e01e5e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\artdemo.pyxel">
@@ -75,5 +78,13 @@
     <Image Include="Images\Promo.png">
       <Filter>Images</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\0_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\readme.txt">
+      <Filter>Levels</Filter>
+    </Text>
   </ItemGroup>
 </Project>
