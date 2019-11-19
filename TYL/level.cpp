@@ -17,7 +17,13 @@ bool Level::loadLevel() {
 		palette_.second.b = 249;
 		palette_.second.a = 255;
 
+		globals::SPRITE_SCALE = 14;
+
 		return true;
+	}
+
+	if (name_ == "select") {
+
 	}
 
 	//Open and validate inputReader
@@ -73,14 +79,21 @@ bool Level::loadLevel() {
 
 	std::vector<std::vector<int> > data;
 	linePos = 0;
+	int maxDim = 0;
 	//Read data from input text line-by-line
 	while (std::getline(inputReader, line)) {
 		if (line[0] == '>') {
 			linePos = 0;
 			if (solution_.data_.empty())
 				solution_ = Grid(data);
-			else 
+			else {
 				grids_.push_back(Grid(data));
+			}
+
+			if (data.size() > maxDim)
+				maxDim = data.size();
+			if (data[0].size()/3 > maxDim)
+				maxDim = data[0].size()/3;
 
 			data.clear();
 			continue;
@@ -91,6 +104,8 @@ bool Level::loadLevel() {
 		}
 		linePos++;
 	}
+
+	globals::SPRITE_SCALE = std::max(20 - (int)std::pow(maxDim, .8), 4);
 
 	//Level 1 - to be loaded in a class from a file
 	/*{
@@ -383,6 +398,10 @@ void Level::drawMenu(Graphics &graphics) {
 		drawTile(graphics, 960-solution_.width_*.5*globals::SPRITE_SCALE - (solution_.width_%2==1 ? 2 : 1.5)*globals::SPRITE_SCALE, 
 			540+20*globals::SPRITE_SCALE, solution_);
 	}
+}
+
+void Level::drawPuzzleSelect(Graphics & graphics) {
+
 }
 
 //Draws an operator and the operator art inside of it
@@ -724,10 +743,10 @@ void Level::inputUp() {
 			}
 			currentSelection_ *= -1;
 		} else {
-			if (currentSelection_*-1 > grids_.size()) {
+			currentSelection_ *= -1;
+			if (currentSelection_ > grids_.size()) {
 				currentSelection_ = grids_.size();
 			}
-			currentSelection_ *= -1;
 		}
 	}
 }
@@ -827,7 +846,8 @@ void Level::inputReturn() {
 
 		tryOperator();
 		if (puzzleSolved()) {
-			name_ = "menu";
+			//name_ = "menu";
+			//loadLevel();
 		}
 	}
 }

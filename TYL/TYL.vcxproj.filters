@@ -22,6 +22,9 @@
     <ClCompile Include="level.cpp">
       <Filter>CPPs</Filter>
     </ClCompile>
+    <ClCompile Include="levelpreview.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -46,6 +49,9 @@
       <Filter>Headers</Filter>
     </ClInclude>
     <ClInclude Include="level.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="levelpreview.h">
       <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>

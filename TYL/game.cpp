@@ -43,7 +43,9 @@ void Game::gameLoop() {
 	while (true) {
 		input.beginNewFrame();
 		
-		if (SDL_PollEvent(&event) && SDL_WaitEvent(&event) != 0) {
+		//SDL_WaitEvent cuts CPU usage from 17% to 0.1% !
+		//SDL_PollEvent(&event) && 
+		if (SDL_WaitEvent(&event) != 0) {
 			if (event.type == SDL_KEYDOWN) {
 				if (event.key.repeat == 0) {
 					input.keyDownEvent(event);
@@ -52,42 +54,43 @@ void Game::gameLoop() {
 				if (input.wasKeyPressed(SDL_SCANCODE_Q)) {
 					return;
 				} 
-					if (input.wasKeyPressed(SDL_SCANCODE_LEFT)) {
-						level_.inputLeft();
-					}
-					if (input.wasKeyPressed(SDL_SCANCODE_RIGHT)) {
-						level_.inputRight();
-					}
-					if (input.wasKeyPressed(SDL_SCANCODE_UP)) {
-						level_.inputUp(); 
-					}
-					if (input.wasKeyPressed(SDL_SCANCODE_DOWN)) {
-						level_.inputDown();
-					}
-					if (input.wasKeyPressed(SDL_SCANCODE_RETURN) || input.wasKeyPressed(SDL_SCANCODE_SPACE)) {
-						level_.inputReturn();
-						if(level_.getName()=="menu"){
-							if (level_.getCurrentSelection() == 1) {
-								level_ = Level("0_2.txt");
-							} else if (level_.getCurrentSelection() == 1) {
-								level_ = Level("options");
-							} else if (level_.getCurrentSelection() == 3) {
-								return;
-							}
+
+				if (input.wasKeyPressed(SDL_SCANCODE_LEFT)) {
+					level_.inputLeft();
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_RIGHT)) {
+					level_.inputRight();
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_UP)) {
+					level_.inputUp(); 
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_DOWN)) {
+					level_.inputDown();
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_RETURN) || input.wasKeyPressed(SDL_SCANCODE_SPACE)) {
+					level_.inputReturn();
+					if(level_.getName()=="menu"){
+						if (level_.getCurrentSelection() == 1) {
+							level_ = Level("jamesPuzzle.txt");
+						} else if (level_.getCurrentSelection() == 2) {
+							level_ = Level("options");
+						} else if (level_.getCurrentSelection() == 3) {
+							return;
 						}
 					}
-					if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE)) { //Restore from backup
-						level_.undo();
-					}
-					if (input.wasKeyPressed(SDL_SCANCODE_S)) {
-						globals::SPRITE_SCALE = 20;
-					}
-					if (input.wasKeyPressed(SDL_SCANCODE_A)) {
-						globals::SPRITE_SCALE = 7;
-					}
-					if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
-						level_ = Level("menu");
-					}
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE)) { //Restore from backup
+					level_.undo();
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_EQUALS)) {
+					globals::SPRITE_SCALE++;
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_MINUS)) {
+					globals::SPRITE_SCALE--;
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
+					level_ = Level("menu");
+				}
 				
 			} else if (event.type = SDL_KEYUP) {
 				input.keyUpEvent(event);

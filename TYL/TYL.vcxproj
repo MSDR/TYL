@@ -133,6 +133,7 @@
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="level.cpp" />
+    <ClCompile Include="levelpreview.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Operators.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="graphics.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="level.h" />
+    <ClInclude Include="levelpreview.h" />
     <ClInclude Include="Operators.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Sprite.h" />

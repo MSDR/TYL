@@ -3,13 +3,16 @@
 
 #include "Globals.h"
 #include "graphics.h"
+#include "levelpreview.h"
 #include "Operators.h"
 
 #include "SDL_include/SDL.h"
 
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <list>
+#include <map>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -23,8 +26,6 @@ public:
 		operators_(level.operators_), 
 		currentOperator_(level.currentOperator_), 
 		currentTiles_(level.currentTiles_) {}
-
-	bool loadLevel();
 
 	void drawLevel(Graphics &graphics);
 
@@ -45,11 +46,14 @@ public:
 	std::string getName() { return name_; }
 
 private:
-	void drawMenu(Graphics &graphics);
+	bool loadLevel();
 
+	void drawMenu(Graphics &graphics);
+	void drawPuzzleSelect(Graphics &graphics);
+
+	void drawTile(Graphics &graphics, int x, int y, const Grid &grid);
 	void drawOperator(Graphics &graphics, int x, int y, char opr);
 	void drawOperatorOutline(Graphics &graphics, int x, int y);
-	void drawTile(Graphics &graphics, int x, int y, const Grid &grid);
 	void drawTileOutline(Graphics &graphics, int x, int y, int w, int h);
 	void drawGrid(Graphics &graphics, const Grid &grid, const int x, const int y);
 
@@ -64,12 +68,13 @@ private:
 	int currentSelection_ = 0;
 	std::vector<Grid> grids_;
 	std::vector<char> operators_;
-	Grid solution_;
 	std::pair<SDL_Color, SDL_Color> palette_; 
 
 	int currentOperator_;
 	std::pair<int, int> currentTiles_;
-
+	Grid solution_;
 	std::list<Level> backups_;
+
+	//std::map<int, std::vector<LevelPreview> > previews_;
 };
 #endif 

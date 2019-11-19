@@ -3,7 +3,7 @@
 namespace operator_grids {
 	Grid plusGrid(){
 		Grid plus(5, 5);
-		plus.data_ = { {0, 0, 2, 0, 0}, {0, 0, 2, 0, 0}, {2, 2, 2, 1, 1}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0} };
+		plus.data_ = { {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0}, {2, 2, 2, 2, 2}, {0, 0, 1, 0, 0}, {0, 0, 1, 0, 0} };
 		return plus;
 	}
 
