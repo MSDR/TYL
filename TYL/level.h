@@ -42,6 +42,7 @@ public:
 
 	bool puzzleSolved() { return (grids_.size() == 1 && grids_[0].data_ == solution_.data_); }
 
+	std::string getPuzzleFilepath();
 	int getCurrentSelection() { return currentSelection_; }
 	std::string getName() { return name_; }
 
@@ -75,6 +76,8 @@ private:
 	Grid solution_;
 	std::list<Level> backups_;
 
-	//std::map<int, std::vector<LevelPreview> > previews_;
+	std::map<int, std::vector<LevelPreview> > previews_;
+	//change input to work with currentTiles_
+	//drawPuzzleSelect to draw previews_
 };
 #endif 

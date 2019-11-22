@@ -1,12 +1,8 @@
-0 0
-
-
-_
-(row col)
-To add a level to a set, increase the col value.
-To add a new set, add a new row one greater than the previous.
-
-Then, add the level with filename [row]_[col].txt
+To add a new level, put it in the Levels folder with filename [row]_[col].txt
+ [row] should be sequential: if the levels go up to row 6, the next row should be 7.
+ [col] is also sequential, starting at 0.
+ 
+ If any rows or cols are skipped, the level will not be read by TYL.
 
 Levels are in the following format:
 [operators]

@@ -71,12 +71,15 @@ void Game::gameLoop() {
 					level_.inputReturn();
 					if(level_.getName()=="menu"){
 						if (level_.getCurrentSelection() == 1) {
-							level_ = Level("jamesPuzzle.txt");
+							level_ = Level("select");
 						} else if (level_.getCurrentSelection() == 2) {
 							level_ = Level("options");
 						} else if (level_.getCurrentSelection() == 3) {
 							return;
 						}
+					} else if(level_.getName()=="select"){
+						level_ = Level(level_.getPuzzleFilepath());
+						std::cout << level_.getPuzzleFilepath();
 					}
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE)) { //Restore from backup

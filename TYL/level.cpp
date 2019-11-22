@@ -23,7 +23,30 @@ bool Level::loadLevel() {
 	}
 
 	if (name_ == "select") {
-
+		currentTiles_ = std::make_pair(2, 0);
+	
+		int row = 0;
+		//while(true) isn't the best practice, 
+		//but the loop breaks when it runs out of files to read so it shouldn't be an issue
+		while (true) {
+			int col = 0;
+			while (true) {
+				std::string filepath = "Levels/" + std::to_string(row); 
+				filepath += "_" + std::to_string(col);
+				filepath += ".txt";
+				LevelPreview p(filepath);
+				if (!p.isGood()) {
+					if (col == 0)
+						return true;
+					else
+						break; //and go to the next row
+				}
+				previews_[row].push_back(p);
+				col++;
+			}
+			row++;
+		}
+		return false;
 	}
 
 	//Open and validate inputReader
@@ -140,6 +163,10 @@ bool Level::loadLevel() {
 void Level::drawLevel(Graphics &graphics) {
 	if (name_ == "menu") {
 		drawMenu(graphics);
+		return;
+	}
+	if (name_ == "select") {
+		drawPuzzleSelect(graphics);
 		return;
 	}
 
@@ -401,7 +428,65 @@ void Level::drawMenu(Graphics &graphics) {
 }
 
 void Level::drawPuzzleSelect(Graphics & graphics) {
+	int offsetX = 0;
+	int offsetY = 0;
+	//std::map<int, std::vector<LevelPreview> >::iterator itr = previews_.begin(); itr != previews_.end(); ++itr
+	
+	offsetY -= ((previews_[currentTiles_.first][0].getHeight())/2.0+2)*globals::SPRITE_SCALE;
 
+	//Draw currently selected row
+	for (int j = 0; j < previews_[currentTiles_.first].size(); ++j) {
+		int x = 960 - (j>=1 ? (7+previews_[currentTiles_.first][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
+			(previews_[currentTiles_.first].size()%2==0 ? 2 : -(previews_[currentTiles_.first][j].getWidth()*.5 + 2 - (previews_[currentTiles_.first][j].getWidth()%2==0 ? .5 : .5)))*globals::SPRITE_SCALE;
+		int y = 540 + offsetY;
+
+		if (j == currentTiles_.second)
+			SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
+		else
+			SDL_SetRenderDrawColor(graphics.getRenderer(), 115, 115, 115, 255);
+
+		previews_[currentTiles_.first][j].drawPreview(graphics, x, y);
+	}
+
+	//draw above currently selected row (< currentTiles.first)
+	if(currentTiles_.first-1 >= 0){
+		for (int i = currentTiles_.first-1; i >= 0; --i) {
+			offsetY -= (2 + previews_[i][0].getHeight() + 4)*globals::SPRITE_SCALE;
+			for (int j = 0; j < previews_[i].size(); ++j) {
+				int x = 960 - (j>=1 ? (7+previews_[i][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
+					(previews_[i].size()%2==0 ? 2 : -(previews_[i][j].getWidth()*.5 + 2 - (previews_[i][j].getWidth()%2==0 ? .5 : .5)))*globals::SPRITE_SCALE;
+				int y = 540 + offsetY;
+
+				if (i == currentTiles_.first && j == currentTiles_.second)
+					SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
+				else
+					SDL_SetRenderDrawColor(graphics.getRenderer(), 115, 115, 115, 255);
+
+				previews_[i][j].drawPreview(graphics, x, y);
+			}
+		}
+	}
+
+	offsetY = ((previews_[currentTiles_.first][0].getHeight())/2.0+4)*globals::SPRITE_SCALE;
+
+	//draw below currently selected row (> currentTiles.first)
+	if(currentTiles_.first+1 < previews_.size()){
+		for (int i = currentTiles_.first+1; i < previews_.size(); ++i) {
+			for (int j = 0; j < previews_[i].size(); ++j) {
+				int x = 960 - (j>=1 ? (7+previews_[i][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
+					(previews_[i].size()%2==0 ? 2 : -(previews_[i][j].getWidth()*.5 + 2 - (previews_[i][j].getWidth()%2==0 ? .5 : .5)))*globals::SPRITE_SCALE;
+				int y = 540 + offsetY;
+
+				if (i == currentTiles_.first && j == currentTiles_.second)
+					SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
+				else
+					SDL_SetRenderDrawColor(graphics.getRenderer(), 115, 115, 115, 255);
+
+				previews_[i][j].drawPreview(graphics, x, y);
+			}
+			offsetY += (2 + previews_[i][0].getHeight() + 4)*globals::SPRITE_SCALE;
+		}
+	}
 }
 
 //Draws an operator and the operator art inside of it
@@ -588,8 +673,6 @@ void Level::drawGrid(Graphics &graphics, const Grid &grid, const int x, const in
 	}
 }
 
-
-
 //Uses whatever operators and tiles are currently entered
 void Level::tryOperator() {
 	if (currentOperator_ == -1) return;
@@ -729,13 +812,23 @@ void Level::tryOperator() {
 	}
 
 	//TO-DO: flip and bucket
-
 }
 
 void Level::inputUp() {
-	if(name_=="menu"){
+	if(name_ == "menu"){
 		currentSelection_--;
 		if (currentSelection_ == 0) currentSelection_ = 4;
+	} else if (name_ == "select"){
+		currentTiles_.first--;
+		if (currentTiles_.first < 0) {
+			currentTiles_.first = previews_.size()-1;
+		}
+
+		//Move to be horizontally within bounds
+		if (currentTiles_.second > previews_.find(currentTiles_.first)->second.size()-1)
+			currentTiles_.second = 0;
+		if (currentTiles_.second < 0)
+			currentTiles_.second = previews_.find(currentTiles_.first)->second.size()-1;
 	} else {
 		if(currentSelection_ > 0) {
 			if (currentSelection_ > operators_.size()) {
@@ -755,74 +848,113 @@ void Level::inputDown() {
 	if(name_ == "menu"){
 		currentSelection_++;
 		if (currentSelection_ == 5) currentSelection_ = 1;
+	} else if (name_ == "select"){
+		currentTiles_.first++;
+		if (currentTiles_.first > previews_.size()-1) {
+			currentTiles_.first = 0;
+		}
+
+		//Move to be horizontally within bounds
+		if (currentTiles_.second > previews_.find(currentTiles_.first)->second.size()-1)
+			currentTiles_.second = 0;
+		if (currentTiles_.second < 0)
+			currentTiles_.second = previews_.find(currentTiles_.first)->second.size()-1;
 	} else {
 		inputUp(); //Functionally identical during a game since it swaps btw two values
 	}
 }
 
 void Level::inputLeft() {
-	if (name_ == "menu") 
-		return;
-
-	if (currentSelection_ > 0) {
-		if(currentSelection_ == grids_.size() && grids_.size()%2==0) //Left bound
-			currentSelection_--;
-		else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==1) //Left bound
-			currentSelection_++;
-		else if (currentSelection_ == 1)
-			currentSelection_++;
-		else if(currentSelection_%2==1)
-			currentSelection_ -= 2;
+	if (name_ == "select") {
+		int maxX = previews_.find(currentTiles_.first)->second.size()-1;
+		std::cout << " maxX: " << maxX << std::endl;
+		if (currentTiles_.second == maxX && maxX%2 == 1) //Left bound
+			currentTiles_.second--;
+		else if(currentTiles_.second == maxX-1 && maxX%2 == 0) //Left bound
+			currentTiles_.second++;
+		else if (currentTiles_.second == 0)
+			currentTiles_.second++;
+		else if(currentTiles_.second%2==0)
+			currentTiles_.second -= 2;
 		else 
-			currentSelection_ += 2;
+			currentTiles_.second += 2;
 
+		std::cout << currentTiles_.second << std::endl;
 	} else {
-		if(currentSelection_*-1 == operators_.size() && operators_.size()%2==0) //Left bound
-			currentSelection_++;
-		else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==1) //Left bound
-			currentSelection_--;
-		else if (currentSelection_ == -1)
-			currentSelection_--;
-		else if((currentSelection_*-1)%2==1)
-			currentSelection_ += 2;
-		else 
-			currentSelection_ -= 2;
+		if (currentSelection_ > 0) {
+			if(currentSelection_ == grids_.size() && grids_.size()%2==0) //Left bound
+				currentSelection_--;
+			else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==1) //Left bound
+				currentSelection_++;
+			else if (currentSelection_ == 1)
+				currentSelection_++;
+			else if(currentSelection_%2==1)
+				currentSelection_ -= 2;
+			else 
+				currentSelection_ += 2;
+		} else {
+			if(currentSelection_*-1 == operators_.size() && operators_.size()%2==0) //Left bound
+				currentSelection_++;
+			else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==1) //Left bound
+				currentSelection_--;
+			else if (currentSelection_ == -1)
+				currentSelection_--;
+			else if((currentSelection_*-1)%2==1)
+				currentSelection_ += 2;
+			else 
+				currentSelection_ -= 2;
+		}
 	}
 }
 
 void Level::inputRight() {
-	if (name_ == "menu") 
+	if (name_ == "select") {
+		int maxX = previews_.find(currentTiles_.first)->second.size()-1;
+		std::cout << " maxX: " << maxX << std::endl;
+		if(currentTiles_.second == maxX && maxX%2 == 0) //Right bound
+			currentTiles_.second--;
+		else if(currentTiles_.second == maxX-1 && maxX%2 == 1) //Right bound
+			currentTiles_.second++;
+		else if (currentTiles_.second == 1) 
+			currentTiles_.second--;
+		else if(currentTiles_.second%2==0)
+			currentTiles_.second += 2;
+		else 
+			currentTiles_.second -= 2;
+
+		std::cout << currentTiles_.second << std::endl;
 		return;
-
-	if(currentSelection_ > 0){
-		if(currentSelection_ == grids_.size() && grids_.size()%2==1) //Right bound
-			currentSelection_--;
-		else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==0) //Right bound
-			currentSelection_++;
-		else if (currentSelection_ == 2) 
-			currentSelection_--;
-		else if(currentSelection_%2==1)
-			currentSelection_ += 2;
-		else 
-			currentSelection_ -= 2;
-
 	} else {
-		if(currentSelection_*-1 == operators_.size() && operators_.size()%2==1) //Right bound
-			currentSelection_++;
-		else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==0) //Right bound
-			currentSelection_--;
-		else if (currentSelection_ == -2)
-			currentSelection_++;
-		else if((currentSelection_*-1)%2==1)
-			currentSelection_ -= 2;
-		else 
-			currentSelection_ += 2;
+		if(currentSelection_ > 0){
+			if(currentSelection_ == grids_.size() && grids_.size()%2==1) //Right bound
+				currentSelection_--;
+			else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==0) //Right bound
+				currentSelection_++;
+			else if (currentSelection_ == 2) 
+				currentSelection_--;
+			else if(currentSelection_%2==1)
+				currentSelection_ += 2;
+			else 
+				currentSelection_ -= 2;
+
+		} else {
+			if(currentSelection_*-1 == operators_.size() && operators_.size()%2==1) //Right bound
+				currentSelection_++;
+			else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==0) //Right bound
+				currentSelection_--;
+			else if (currentSelection_ == -2)
+				currentSelection_++;
+			else if((currentSelection_*-1)%2==1)
+				currentSelection_ -= 2;
+			else 
+				currentSelection_ += 2;
+		}
 	}
 }
 
 void Level::inputReturn() {
-	if(name_ == "menu"){
-		
+	if(name_ == "menu" || name_ == "select"){
+		return;
 	} else {
 		backup();
 
@@ -909,6 +1041,15 @@ void Level::undo() {
 	currentTiles_ = other.currentTiles_;
 
 	backups_.pop_back();
+}
+
+std::string Level::getPuzzleFilepath() {
+	if (name_ == "select") {
+		return std::to_string(currentTiles_.first) + "_" 
+			+ std::to_string(currentTiles_.second) + ".txt";
+	} else {
+		return name_;
+	}
 }
 
 

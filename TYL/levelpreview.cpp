@@ -2,6 +2,7 @@
 
 //Returns false if invalid level file
 bool LevelPreview::loadPreview() {
+	std::cout << "(loading filepath " << filepath_ << " )";
 	std::ifstream inputReader;
 	inputReader.open(filepath_);
 	if (!inputReader.good())
@@ -70,6 +71,7 @@ bool LevelPreview::loadPreview() {
 //y: upper-left corner of the tile's border
 //if preview_.data_[0][0] == -1, draws a tile outline instead of a tile
 void LevelPreview::drawPreview(Graphics & graphics, int x, int y) {
+	//std::cout << "\n drawing " << filepath_ << " at x: " << x << ", y: " << y;
 	SDL_Rect r;
 	//Left side
 	r.x = x;
