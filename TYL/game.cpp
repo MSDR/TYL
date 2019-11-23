@@ -12,6 +12,7 @@ namespace input_keys {
 
 Game::Game() {
 	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_ShowCursor(SDL_DISABLE);
 	gameLoop();
 }
 
@@ -27,15 +28,7 @@ void Game::gameLoop() {
 	level_ = Level("menu");
 
 	bool gameUpdated = true;
-
-	//sprite_ = Sprite(); 
-	/* Use this constructor instead: Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int sourceY, 
-									int width, int height, float posX, float posY); */
-
-	
-	//Reset these with every level change
-	char currentOperator = ' ';
-	std::pair<int, int> currentGrids = std::make_pair(-1, -1);
+	creditsPage_ = false;
 
 	int LAST_UPDATE_TIME = SDL_GetTicks();
 
@@ -43,8 +36,7 @@ void Game::gameLoop() {
 	while (true) {
 		input.beginNewFrame();
 		
-		//SDL_WaitEvent cuts CPU usage from 17% to 0.1% !
-		//SDL_PollEvent(&event) && 
+		//Using SDL_WaitEvent over SDL_PollEvent cuts CPU usage from 17% to 0.1% !
 		if (SDL_WaitEvent(&event) != 0) {
 			if (event.type == SDL_KEYDOWN) {
 				if (event.key.repeat == 0) {
@@ -72,14 +64,14 @@ void Game::gameLoop() {
 					if(level_.getName()=="menu"){
 						if (level_.getCurrentSelection() == 1) {
 							level_ = Level("select");
-						} else if (level_.getCurrentSelection() == 2) {
-							level_ = Level("options");
 						} else if (level_.getCurrentSelection() == 3) {
 							return;
+						} else if (level_.getCurrentSelection() == 4) {
+							creditsPage_ = true;
+							level_ = Level(" ");
 						}
 					} else if(level_.getName()=="select"){
 						level_ = Level(level_.getPuzzleFilepath());
-						std::cout << level_.getPuzzleFilepath();
 					}
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE)) { //Restore from backup
@@ -92,14 +84,16 @@ void Game::gameLoop() {
 					globals::SPRITE_SCALE--;
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
+					if (creditsPage_) {
+						creditsPage_ = false;
+						level_ = Level("menu");
+					}
 					std::string levelName = level_.getName();
-
 					if (levelName == "select") {
 						level_ = Level("menu");
 					} else if (levelName == "menu") {
 						continue;
 					} else {
-						std::cout << levelName << std::endl;
 						int row = 0;
 						int col = 0;
 						int midIndex = 0;
@@ -113,7 +107,6 @@ void Game::gameLoop() {
 								break;
 							}
 						}
-						std::cout << " row " << row << "\n col " << col << std::endl;
 						level_ = Level("select", row, col);
 					}
 				}
@@ -130,7 +123,8 @@ void Game::gameLoop() {
 		update(std::min(ELAPSED_TIME_MILLIS, MAX_FRAME_TIME));
 		LAST_UPDATE_TIME = CURRENT_TIME_MILLIS;
 
-		//This makes the game only redraw itself when neccessary -- a HUGE performance increase
+		//The game only needs to draw on an input event. 
+		//Only drawing when necessary drastically increases efficiency.
 		if(gameUpdated) {
 			draw(graphics);
 			gameUpdated = false;
@@ -140,18 +134,22 @@ void Game::gameLoop() {
 
 //Primary draw function across game
 void Game::draw(Graphics &graphics) {
-	graphics.clear();
-	//sprite_.draw(graphics, sprite_.getX(), sprite_.getY());
-
-	//These lines set the background to be blacks
-	SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
-	SDL_RenderFillRect(graphics.getRenderer(), NULL);
-	
-	level_.drawLevel(graphics);
-
-	graphics.flip();
+	if (creditsPage_) {
+		SDL_Texture* t = IMG_LoadTexture(graphics.getRenderer(), "./Images/RGSCreditPage.bmp");
+		if (t == NULL) std::cerr << "ERROR: Credit page could not be loaded.";
+		SDL_RenderCopy(graphics.getRenderer(), t, NULL, NULL);
+		SDL_RenderPresent(graphics.getRenderer());
+		SDL_DestroyTexture(t);
+	} else {
+		graphics.clear();
+		//These lines set the background to be blacks
+		SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
+		SDL_RenderFillRect(graphics.getRenderer(), NULL);
+		level_.drawLevel(graphics);
+		graphics.flip();
+	}
 }
 
 void Game::update(float elapsedTime) {
-	//sprite_.update(elapsedTime);
+	//Function is currently unused.
 }

@@ -140,23 +140,15 @@ c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(828): war
           [
               _Ty1=int
           ]
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(835): warning C4267: '=': conversion from 'size_t' to '_Ty2', possible loss of data
-          with
-          [
-              _Ty2=int
-          ]
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(839): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(845): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(865): warning C4267: '=': conversion from 'size_t' to '_Ty2', possible loss of data
-          with
-          [
-              _Ty2=int
-          ]
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(873): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(921): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(832): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(843): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(849): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(866): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(880): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(930): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating code
-  0 of 1328 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  4 of 1328 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   TYL.vcxproj -> C:\Users\Mason\Documents\Visual Studio 2017\Projects\TYL\x64\Release\TYL.exe

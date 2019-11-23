@@ -84,12 +84,69 @@
     <Image Include="Images\Promo.png">
       <Filter>Images</Filter>
     </Image>
+    <Image Include="Images\RGSCreditPage.png">
+      <Filter>Images</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Levels\0_0.txt">
       <Filter>Levels</Filter>
     </Text>
     <Text Include="Levels\readme.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_4.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_5.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_6.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_7.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\2_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\2_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\3_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\3_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\5_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\5_1.txt">
       <Filter>Levels</Filter>
     </Text>
   </ItemGroup>
