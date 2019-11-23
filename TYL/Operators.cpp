@@ -21,7 +21,7 @@ namespace operator_grids {
 
 	Grid bucketGrid() {
 		Grid bucket(5, 5);
-		bucket.data_ = { {0, 0, 0, 1, 0}, {0, 0, 0, 0, 1}, {0, 1, 1, 0, 1}, {0, 1, 1, 1, 1}, {0, 0, 1, 1, 0} };
+		bucket.data_ = { {0, 0, 1, 1, 1}, {0, 1, 0, 1, 1}, {0, 0, 1, 0, 1}, {0, 1, 0, 1, 1}, {0, 0, 1, 1, 1} };
 		return bucket;
 	}
 

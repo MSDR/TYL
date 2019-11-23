@@ -1,7 +1,7 @@
 #include "level.h"
 
 
-bool Level::loadLevel() {
+bool Level::loadLevel(int inRow, int inCol) {
 	currentSelection_ = 1;
 	currentTiles_ = std::make_pair(-1, -1);
 	currentOperator_ = -1;
@@ -23,7 +23,7 @@ bool Level::loadLevel() {
 	}
 
 	if (name_ == "select") {
-		currentTiles_ = std::make_pair(2, 0);
+		currentTiles_ = std::make_pair(inRow, inCol);
 	
 		int row = 0;
 		//while(true) isn't the best practice, 
@@ -708,6 +708,8 @@ void Level::tryOperator() {
 
 		currentOperator_ = -1;
 		currentTiles_ = std::make_pair(-1, -1);
+
+		currentSelection_ = currentSelection_ > 0 ? 1 : -1;
 	}
 
 	//Minus (-) operator
@@ -736,6 +738,8 @@ void Level::tryOperator() {
 
 		currentOperator_ = -1;
 		currentTiles_ = std::make_pair(-1, -1);
+
+		currentSelection_ = currentSelection_ > 0 ? 1 : -1;
 	}
 
 	//=================PLACE UNARY OPERATORS BELOW THIS LINE=====================================================================================================
@@ -832,13 +836,13 @@ void Level::inputUp() {
 	} else {
 		if(currentSelection_ > 0) {
 			if (currentSelection_ > operators_.size()) {
-				currentSelection_ = operators_.size();
+				currentSelection_ = operators_.size() - (currentSelection_%2==operators_.size()%2 ? 0 : 1);
 			}
 			currentSelection_ *= -1;
 		} else {
 			currentSelection_ *= -1;
 			if (currentSelection_ > grids_.size()) {
-				currentSelection_ = grids_.size();
+				currentSelection_ = grids_.size() - (currentSelection_%2==grids_.size()%2 ? 0 : 1);
 			}
 		}
 	}
@@ -867,8 +871,9 @@ void Level::inputDown() {
 void Level::inputLeft() {
 	if (name_ == "select") {
 		int maxX = previews_.find(currentTiles_.first)->second.size()-1;
-		std::cout << " maxX: " << maxX << std::endl;
-		if (currentTiles_.second == maxX && maxX%2 == 1) //Left bound
+		if (maxX == 0)
+			return;
+		else if (currentTiles_.second == maxX && maxX%2 == 1) //Left bound
 			currentTiles_.second--;
 		else if(currentTiles_.second == maxX-1 && maxX%2 == 0) //Left bound
 			currentTiles_.second++;
@@ -879,10 +884,11 @@ void Level::inputLeft() {
 		else 
 			currentTiles_.second += 2;
 
-		std::cout << currentTiles_.second << std::endl;
 	} else {
 		if (currentSelection_ > 0) {
-			if(currentSelection_ == grids_.size() && grids_.size()%2==0) //Left bound
+			if (grids_.size() == 1)
+				return;
+			else if(currentSelection_ == grids_.size() && grids_.size()%2==0) //Left bound
 				currentSelection_--;
 			else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==1) //Left bound
 				currentSelection_++;
@@ -892,8 +898,11 @@ void Level::inputLeft() {
 				currentSelection_ -= 2;
 			else 
 				currentSelection_ += 2;
+
 		} else {
-			if(currentSelection_*-1 == operators_.size() && operators_.size()%2==0) //Left bound
+			if (operators_.size() == 1)
+				return;
+			else if(currentSelection_*-1 == operators_.size() && operators_.size()%2==0) //Left bound
 				currentSelection_++;
 			else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==1) //Left bound
 				currentSelection_--;
@@ -911,7 +920,9 @@ void Level::inputRight() {
 	if (name_ == "select") {
 		int maxX = previews_.find(currentTiles_.first)->second.size()-1;
 		std::cout << " maxX: " << maxX << std::endl;
-		if(currentTiles_.second == maxX && maxX%2 == 0) //Right bound
+		if (maxX == 0)
+			return;
+		else if(currentTiles_.second == maxX && maxX%2 == 0) //Right bound
 			currentTiles_.second--;
 		else if(currentTiles_.second == maxX-1 && maxX%2 == 1) //Right bound
 			currentTiles_.second++;
@@ -922,11 +933,11 @@ void Level::inputRight() {
 		else 
 			currentTiles_.second -= 2;
 
-		std::cout << currentTiles_.second << std::endl;
-		return;
 	} else {
 		if(currentSelection_ > 0){
-			if(currentSelection_ == grids_.size() && grids_.size()%2==1) //Right bound
+			if (grids_.size() == 1)
+				return;
+			else if(currentSelection_ == grids_.size() && grids_.size()%2==1) //Right bound
 				currentSelection_--;
 			else if(currentSelection_ == grids_.size()-1 && grids_.size()%2==0) //Right bound
 				currentSelection_++;
@@ -938,7 +949,9 @@ void Level::inputRight() {
 				currentSelection_ -= 2;
 
 		} else {
-			if(currentSelection_*-1 == operators_.size() && operators_.size()%2==1) //Right bound
+			if (operators_.size() == 1)
+				return;
+			else if(currentSelection_*-1 == operators_.size() && operators_.size()%2==1) //Right bound
 				currentSelection_++;
 			else if(currentSelection_*-1 == operators_.size()-1 && operators_.size()%2==0) //Right bound
 				currentSelection_--;
@@ -976,7 +989,12 @@ void Level::inputReturn() {
 				currentOperator_ = (currentSelection_*-1) - 1;
 		}
 
+		if (currentSelection_ < 0 && operators_.size() == 0) {
+			inputUp();
+		}
+
 		tryOperator();
+
 		if (puzzleSolved()) {
 			//name_ = "menu";
 			//loadLevel();

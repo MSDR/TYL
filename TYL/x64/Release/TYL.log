@@ -135,28 +135,28 @@ c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(666): war
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(667): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(668): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(669): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(824): warning C4267: '=': conversion from 'size_t' to '_Ty1', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(828): warning C4267: '=': conversion from 'size_t' to '_Ty1', possible loss of data
           with
           [
               _Ty1=int
           ]
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(831): warning C4267: '=': conversion from 'size_t' to '_Ty2', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(835): warning C4267: '=': conversion from 'size_t' to '_Ty2', possible loss of data
           with
           [
               _Ty2=int
           ]
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(835): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(841): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(861): warning C4267: '=': conversion from 'size_t' to '_Ty2', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(839): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(845): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(865): warning C4267: '=': conversion from 'size_t' to '_Ty2', possible loss of data
           with
           [
               _Ty2=int
           ]
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(869): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(912): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(873): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(921): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating code
-  2 of 1322 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  0 of 1328 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   TYL.vcxproj -> C:\Users\Mason\Documents\Visual Studio 2017\Projects\TYL\x64\Release\TYL.exe

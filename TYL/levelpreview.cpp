@@ -2,7 +2,7 @@
 
 //Returns false if invalid level file
 bool LevelPreview::loadPreview() {
-	std::cout << "(loading filepath " << filepath_ << " )";
+	//std::cout << "(loading filepath " << filepath_ << " )";
 	std::ifstream inputReader;
 	inputReader.open(filepath_);
 	if (!inputReader.good())

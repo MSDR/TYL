@@ -92,7 +92,30 @@ void Game::gameLoop() {
 					globals::SPRITE_SCALE--;
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
-					level_ = Level("menu");
+					std::string levelName = level_.getName();
+
+					if (levelName == "select") {
+						level_ = Level("menu");
+					} else if (levelName == "menu") {
+						continue;
+					} else {
+						std::cout << levelName << std::endl;
+						int row = 0;
+						int col = 0;
+						int midIndex = 0;
+						for (int i = 0; i < levelName.size(); ++i) {
+							if (levelName[i] == '_') {
+								row = std::stoi(levelName.substr(0, i));
+								midIndex = i;
+							}
+							if (levelName[i] == '.') {
+								col = std::stoi(levelName.substr(midIndex+1, i-midIndex+1));
+								break;
+							}
+						}
+						std::cout << " row " << row << "\n col " << col << std::endl;
+						level_ = Level("select", row, col);
+					}
 				}
 				
 			} else if (event.type = SDL_KEYUP) {

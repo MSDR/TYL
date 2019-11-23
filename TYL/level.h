@@ -20,7 +20,7 @@
 class Level {
 public:
 	Level() : name_("menu") { loadLevel(); }
-	Level(std::string name) : name_(name) { loadLevel(); }
+	Level(std::string name, int row = 0, int col = 0) : name_(name) { loadLevel(row, col); }
 	Level(const Level &level) : 
 		grids_(level.grids_),
 		operators_(level.operators_), 
@@ -47,7 +47,7 @@ public:
 	std::string getName() { return name_; }
 
 private:
-	bool loadLevel();
+	bool loadLevel(int inRow = 0, int inCol = 0);
 
 	void drawMenu(Graphics &graphics);
 	void drawPuzzleSelect(Graphics &graphics);
