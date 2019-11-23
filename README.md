@@ -1,5 +1,5 @@
 # TYL
-TYL - A grid-based puzzle game in development for the Rensselaer Game Showcase 2019
+TYL - A grid-based puzzle game in development for the Rensselaer Game Showcase 2019    
 Created by Mason Sklar.
 
 git is causing issues with committing to master, so for now any updates will be to Working_Branch. Download the game from there.
