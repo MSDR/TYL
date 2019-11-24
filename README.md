@@ -1,4 +1,4 @@
-#TYL
+# TYL
 ______
 TYL - A grid-based puzzle game in development for the Rensselaer Game Showcase 2019
 Created by Mason Sklar.
