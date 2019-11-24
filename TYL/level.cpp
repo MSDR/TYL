@@ -829,21 +829,29 @@ void Level::inputUp() {
 		}
 
 		//Move to be horizontally within bounds
-		if (currentTiles_.second > previews_.find(currentTiles_.first)->second.size()-1)
+		int rowSize = previews_.find(currentTiles_.first)->second.size();
+		if (rowSize == 1)
 			currentTiles_.second = 0;
-		if (currentTiles_.second < 0)
-			currentTiles_.second = previews_.find(currentTiles_.first)->second.size()-1;
+		else if (currentTiles_.second > rowSize-1)
+			currentTiles_.second = rowSize - (currentTiles_.second%2==rowSize%2 ? 2 : 1);
+
 	} else {
 		if(currentSelection_ > 0) {
 			if (currentSelection_ > operators_.size()) {
 				currentSelection_ = operators_.size() - (currentSelection_%2==operators_.size()%2 ? 0 : 1);
 			}
 			currentSelection_ *= -1;
+
+			if (operators_.size() == 1)
+				currentSelection_ = -1;
 		} else {
 			currentSelection_ *= -1;
 			if (currentSelection_ > grids_.size()) {
 				currentSelection_ = grids_.size() - (currentSelection_%2==grids_.size()%2 ? 0 : 1);
 			}
+
+			if (operators_.size() == 1)
+				currentSelection_ = 1;
 		}
 	}
 }
@@ -859,17 +867,20 @@ void Level::inputDown() {
 		}
 
 		//Move to be horizontally within bounds
-		if (currentTiles_.second > previews_.find(currentTiles_.first)->second.size()-1)
+		int rowSize = previews_.find(currentTiles_.first)->second.size();
+		if (rowSize == 1)
 			currentTiles_.second = 0;
-		if (currentTiles_.second < 0)
-			currentTiles_.second = previews_.find(currentTiles_.first)->second.size()-1;
+		else if (currentTiles_.second > rowSize-1)
+			currentTiles_.second = rowSize - (currentTiles_.second%2==rowSize%2 ? 2 : 1);
 	} else {
 		inputUp(); //Functionally identical during a game since it swaps btw two values
 	}
 }
 
 void Level::inputLeft() {
-	if (name_ == "select") {
+	if (name_ == "menu") {
+
+	} else if (name_ == "select") {
 		int maxX = previews_.find(currentTiles_.first)->second.size()-1;
 		if (maxX == 0)
 			return;
@@ -917,9 +928,10 @@ void Level::inputLeft() {
 }
 
 void Level::inputRight() {
-	if (name_ == "select") {
+	if (name_ == "menu") {
+
+	} else if (name_ == "select") {
 		int maxX = previews_.find(currentTiles_.first)->second.size()-1;
-		std::cout << " maxX: " << maxX << std::endl;
 		if (maxX == 0)
 			return;
 		else if(currentTiles_.second == maxX && maxX%2 == 0) //Right bound

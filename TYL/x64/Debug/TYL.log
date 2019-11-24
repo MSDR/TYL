@@ -1,14 +1,9 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Grids.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  game.cpp
+  graphics.cpp
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(9): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(10): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
 c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(77): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\rectangle.h(31): warning C4244: 'return': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\game.cpp(104): warning C4244: 'argument': conversion from 'const _Ty' to 'float', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\graphics.cpp(7): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   TYL.vcxproj -> C:\Users\Mason\Documents\Visual Studio 2017\Projects\TYL\x64\Debug\TYL.exe

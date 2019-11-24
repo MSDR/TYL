@@ -1,0 +1,85 @@
+To add a new level, put it in the Levels folder with filename [row]_[col].txt
+ [row] should be sequential: if the levels go up to row 6, the next row should be 7.
+ [col] is also sequential, starting at 0.
+ 
+ If any rows or cols are skipped, the level will not be read by TYL.
+__________________________________________________________________________________________
+
+Levels are in the following format:
+[operators]
+
+[color1]
+
+[color2]
+
+[solution grid]
+>
+[grid0]
+>
+[grid1]
+>
+[grid2]
+>
+.
+.
+.
+>
+__________________________________________________________________________________________
+
+[operators] should be a series of characters, separated by spaces:
++ plus
+- minus
+f flip
+b bucket
+__________________________________________________________________________________________
+
+A color is a series of 4 values, 0-255, representing RGBA
+Separate these numbers with spaces.
+You'll probably want the A value to be 255, otherwise the color will look faded.
+__________________________________________________________________________________________
+
+Here's an example 3x3 grid:
+
+010
+202
+010
+
+Make sure to place a '>' after each grid
+__________________________________________________________________________________________
+Complete Level example:
+
+f + + - b
+
+255 255 255 255
+45 125 249 255
+
+02100
+00002
+10101
+20000
+00120
+>
+10011
+10000
+00000
+00001
+11001
+>
+00200
+00200
+11111
+00200
+00200
+>
+01000
+00001
+11111
+10000
+00010
+>
+00000
+01110
+01110
+01110
+00000
+>

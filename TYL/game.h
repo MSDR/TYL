@@ -31,6 +31,8 @@ public:
 	//Sprite sprite_;
 
 	Level level_;
+
+	bool creditsPage_;
 };
 
 #endif GAME_H_

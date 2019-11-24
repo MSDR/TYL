@@ -33,11 +33,14 @@ public:
 	//Given another Rectangle, returns the side of collision
 	const sides::Side getCollisionSide(Rectangle &other) const;
 
+	bool isGood() { return good_; }
 protected:
 	SDL_Rect sourceRect_;
 	SDL_Texture* spriteSheet_;
 	float x_;
 	float y_;
+
+	bool good_;
 
 	Rectangle boundingBox_;
 };

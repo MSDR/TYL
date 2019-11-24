@@ -5,7 +5,7 @@
 
 #include <iostream>
 
-Sprite::Sprite() {
+Sprite::Sprite() : good_(false) {
 }
 
 Sprite::Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int sourceY, int width, int height, float posX, float posY) :
@@ -21,6 +21,9 @@ Sprite::Sprite(Graphics &graphics, const std::string &filePath, int sourceX, int
 
 	if (spriteSheet_ == NULL) {
 		std::cout << "\nError: Unable to load image\n";
+		good_ = false;
+	} else {
+		good_ = true;
 	}
 
 	boundingBox_ = Rectangle(x_, y_, width * globals::SPRITE_SCALE, height * globals::SPRITE_SCALE);
@@ -30,6 +33,7 @@ Sprite::~Sprite() {
 }
 
 void Sprite::draw(Graphics &graphics, int x, int y) {
+	std::cout << "drawing\n";
 	SDL_Rect destinationRectangle = { x, y, sourceRect_.w * globals::SPRITE_SCALE, sourceRect_.h * globals::SPRITE_SCALE };
 	graphics.blitSurface(spriteSheet_, &sourceRect_, &destinationRectangle);
 }

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="game.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Operators.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="level.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="levelpreview.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Operators.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="levelpreview.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{d30ce3d1-c9b9-484a-8e15-227e0ff31b97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CPPs">
+      <UniqueIdentifier>{0d8398b9-c6e2-469c-a4dc-9dc87a6dc26e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{1bfb0c7f-8cf2-45ca-885b-037037e391e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{db383f13-ddb0-47a0-b8f1-6ce976e01e5e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\artdemo.pyxel">
+      <Filter>Images</Filter>
+    </None>
+    <None Include="Images\layout.pyxel">
+      <Filter>Images</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\layout.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Images\Promo.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Images\RGSCreditPage.png">
+      <Filter>Images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\0_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\readme.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_4.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_5.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_6.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_7.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\2_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\2_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\3_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\3_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\5_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\5_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
