@@ -27,10 +27,13 @@ Levels are in the following format:
 __________________________________________________________________________________________
 
 [operators] should be a series of characters, separated by spaces:
-+ plus
-- minus
-f flip
-b bucket
++       plus
+-       minus
+v[1][2] vortex -- [1] and [2] are placeholders for layers. Can be 0, 1, or 2.
+b[1][2] bucket -- [1] and [2] are placeholders for layers. Can be 0, 1, or 2.
+d       duplicate
+mh      horizontal mirror
+mv      vertical mirror
 __________________________________________________________________________________________
 
 A color is a series of 4 values, 0-255, representing RGBA
@@ -44,11 +47,11 @@ Here's an example 3x3 grid:
 202
 010
 
-Make sure to place a '>' after each grid
+Make sure to place a '>' after each grid.
 __________________________________________________________________________________________
 Complete Level example:
 
-f + + - b
+v12 + + - b01
 
 255 255 255 255
 45 125 249 255

@@ -172,13 +172,15 @@
     <Text Include="Levels\2_1.txt" />
     <Text Include="Levels\3_0.txt" />
     <Text Include="Levels\3_1.txt" />
+    <Text Include="Levels\3_2.txt" />
     <Text Include="Levels\4_0.txt" />
     <Text Include="Levels\4_1.txt" />
     <Text Include="Levels\4_2.txt" />
     <Text Include="Levels\4_3.txt" />
+    <Text Include="Levels\4_4.txt" />
     <Text Include="Levels\5_0.txt" />
     <Text Include="Levels\5_1.txt" />
-    <Text Include="Levels\readme.txt" />
+    <Text Include="Levels\Puzzle Authoring Guide.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

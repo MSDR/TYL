@@ -58,24 +58,42 @@ bool Level::loadLevel(int inRow, int inCol) {
 	std::string line = "";
 	std::string word = "";
 
+	//Read in operators
+	std::getline(inputReader, line);
+
 	//lineReader used to access individual words in a line
 	std::istringstream lineReader(line);
 
-	//Read in operators
-	std::getline(inputReader, line);
-	int linePos = 0;
-	while (linePos <= line.size() - 1) {
-		char opr = line[linePos];
-		if (opr == ' ') break;
-		operators_.push_back(opr);
-		linePos += 2;
+	while (lineReader >> word) {
+		char opr = word[0];
+		std::cout << " " << opr;
+		if (opr == '+') {        //PLUS
+			operators_.push_back(new PlusOperator());
+		} else if (opr == '-') { //MINUS
+			operators_.push_back(new MinusOperator());
+		} else if (opr == 'd') { //DUPLICATE
+			operators_.push_back(new DuplicateOperator());
+		} else if (opr == 'm') { //MIRROR
+			if (word.size() != 2) continue;
+			operators_.push_back(new MirrorOperator(word[1] == 'v'));
+		} else if (opr == 'v') { //VORTEX
+			if (word.size() != 3) continue;
+			int c1 = word[1]-'0';
+			int c2 = word[2]-'0';
+			operators_.push_back(new VortexOperator(c1, c2));
+		} else if (opr == 'b') { //BUCKET
+			if (word.size() != 3) continue;
+			int c1 = word[1]-'0';
+			int c2 = word[2]-'0';
+			operators_.push_back(new BucketOperator(c1, c2));
+		}
 	}
 
 	std::getline(inputReader, line);
 
 	//Read in palette
 	std::getline(inputReader, line);
-	lineReader.str(line);
+	lineReader = std::istringstream(line);
 	lineReader >> word;
 	palette_.first.r = std::stoi(word);
 	lineReader >> word;
@@ -101,7 +119,7 @@ bool Level::loadLevel(int inRow, int inCol) {
 	std::getline(inputReader, line);
 
 	std::vector<std::vector<int> > data;
-	linePos = 0;
+	int linePos = 0;
 	int maxDim = 0;
 	//Read data from input text line-by-line
 	while (std::getline(inputReader, line)) {
@@ -212,12 +230,12 @@ void Level::drawLevel(Graphics &graphics) {
 	int maxX = 960;
 
 	//Copy only available operators to be drawn
-	std::vector<char> oprs;
+	std::vector<Operator*> oprs;
 	for(int o = 0; o < operators_.size(); ++o) {
 		if(o!= currentOperator_){
 			oprs.push_back(operators_[o]);
 		} else {
-			oprs.push_back('_');
+			oprs.push_back(new Operator()); //EMPTY operator -- just an outline
 		}
 	}
 
@@ -263,6 +281,7 @@ void Level::drawLevel(Graphics &graphics) {
 	if(currentOperator_ != -1) {
 		SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
 		drawOperator(graphics, 960-5*globals::SPRITE_SCALE, 540+5*globals::SPRITE_SCALE, operators_[currentOperator_]);
+		delete oprs[currentOperator_];
 	}
 
 	//Draw currentTiles_
@@ -492,8 +511,8 @@ void Level::drawPuzzleSelect(Graphics & graphics) {
 //Draws an operator and the operator art inside of it
 //x, y: upper-left corner of the horizontal white box in the operator's outline
 //if opr=='_', draws an outline instead of the operator
-void Level::drawOperator(Graphics &graphics, int x, int y, char opr) {
-	if (opr == '_') {
+void Level::drawOperator(Graphics &graphics, int x, int y, Operator* opr) {
+	if (opr->type() == EMPTY) {
 		drawOperatorOutline(graphics, x, y);
 		return;
 	}
@@ -503,8 +522,8 @@ void Level::drawOperator(Graphics &graphics, int x, int y, char opr) {
 	//Draw operator's border 
 	{
 		r.x = x;
-		r.y = y;
-		r.w = 11*globals::SPRITE_SCALE - (operator_grids::isUnary(opr) ? 1 : 0)*globals::SPRITE_SCALE; //If a unary operator (one tile), show only one 'connector'
+		r.y = y;                          //If a unary operator (one tile), show only one 'connector'
+		r.w = 11*globals::SPRITE_SCALE - (opr->type()==UNARY || opr->type()==DUPLICATORY ? 1 : 0)*globals::SPRITE_SCALE; 
 		r.h = 7*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
@@ -533,17 +552,7 @@ void Level::drawOperator(Graphics &graphics, int x, int y, char opr) {
 	{
 		r.x += globals::SPRITE_SCALE;
 		Grid oGrid(5, 5);
-		if (opr == '+') {
-			oGrid = operator_grids::plusGrid();
-		} else if (opr == '-') {
-			oGrid = operator_grids::minusGrid();
-		} else if (opr == 'f') {
-			oGrid = operator_grids::flipGrid();
-		} else if (opr == 'b') {
-			oGrid = operator_grids::bucketGrid();
-		} else if (opr == 'd') {
-			oGrid = operator_grids::duplicateGrid();
-		}
+		oGrid = opr->grid();
 		drawGrid(graphics, oGrid, r.x, r.y);
 	}
 }
@@ -675,32 +684,63 @@ void Level::drawGrid(Graphics &graphics, const Grid &grid, const int x, const in
 
 //Uses whatever operators and tiles are currently entered
 void Level::tryOperator() {
-	if (currentOperator_ == -1) return;
+	if (currentOperator_ == -1) return; //No operator selected
 
-	char opr = operators_[currentOperator_];
-	std::pair<int, int> gridIndices = currentTiles_;
+	Operator* opr = operators_[currentOperator_];
 
-	//Plus (+) operator
-	if (gridIndices.first != -1 && gridIndices.second != -1 &&
-		opr == '+' && std::find(operators_.begin(), operators_.end(), '+') != operators_.end()){
+	if (opr->type() == UNARY) {
+		if (currentTiles_.first == -1) {
+			currentTiles_.first = currentTiles_.second;
+			currentTiles_.second = -1;
+		}
+		if (currentTiles_.first == -1) return; //No tile selected
+
+		Grid first = grids_[currentTiles_.first];
+
+		//Create the new Grid
+		Grid outGrid = Grid(first.width_, first.height_);
+
+		opr->operate(&outGrid, first);
+
+		operators_.erase(operators_.begin() + currentOperator_);
+
+		std::vector<Grid> tGrids;
+		for (size_t i = 0; i < grids_.size(); ++i) {
+			if(i != currentTiles_.first) 
+				tGrids.push_back(grids_[i]);
+			else
+				tGrids.push_back(outGrid);
+		}
+		grids_.clear();
+		grids_ = tGrids;
+		tGrids.clear();
+
+		currentOperator_ = -1;
+		currentTiles_ = std::make_pair(-1, -1);
+	} else if (opr->type() == BINARY){
+		if (currentTiles_.first == -1 || currentTiles_.second == -1) return; //No tile selected
+
 		//Set up iterators
 		std::vector<Grid>::iterator first = grids_.begin();
 		std::vector<Grid>::iterator second = grids_.begin();
-		first = first + gridIndices.first;
-		second = second + gridIndices.second;
+		first = first + currentTiles_.first;
+		second = second + currentTiles_.second;
 
 		//Create the new Grid
-		Grid* outGrid = new Grid((*first).width_, (*first).height_);
+		Grid outGrid = Grid((*first).width_, (*first).height_);
 
 		//Perform the operation
-		add(*first, *second, outGrid);
+		opr->operate(&outGrid, *first, *second);
 
 		//Manage grids_ and operators_
-		grids_.push_back(*outGrid);
-		operators_.erase(std::find(operators_.begin(), operators_.end(), '+'));
+		operators_.erase(operators_.begin() + currentOperator_);
 		std::vector<Grid> tGrids;
 		for (size_t i = 0; i < grids_.size(); ++i) {
-			if(i != gridIndices.first && i != gridIndices.second) tGrids.push_back(grids_[i]);
+			if(i != currentTiles_.first && i != currentTiles_.second) {
+				tGrids.push_back(grids_[i]);
+			} else if(i == currentTiles_.first) {
+				tGrids.push_back(outGrid);
+			}
 		}
 		grids_.clear();
 		grids_ = tGrids;
@@ -710,112 +750,22 @@ void Level::tryOperator() {
 		currentTiles_ = std::make_pair(-1, -1);
 
 		currentSelection_ = currentSelection_ > 0 ? 1 : -1;
-	}
+	} else if (opr->type() == DUPLICATORY) {
+		if (currentTiles_.first == -1) return;
 
-	//Minus (-) operator
-	if (gridIndices.first != -1 && gridIndices.second != -1 &&
-		opr == '-' && std::find(operators_.begin(), operators_.end(), '-') != operators_.end()){
-
-		Grid first = grids_[gridIndices.first];
-		Grid second = grids_[gridIndices.second];
+		Grid first = grids_[currentTiles_.first];
 
 		//Create the new Grid
-		Grid* outGrid = new Grid(first.width_, first.height_);
+		Grid outGrid = Grid(first.width_, first.height_);
 
-		//Perform the operation
-		subtract(first, second, outGrid);
+		opr->operate(&outGrid, first);
 
-		//Manage grids_ and operators_
-		grids_.push_back(*outGrid);
-		operators_.erase(std::find(operators_.begin(), operators_.end(), '-'));
-		std::vector<Grid> tGrids;
-		for (size_t i = 0; i < grids_.size(); ++i) {
-			if(i != gridIndices.first && i != gridIndices.second) tGrids.push_back(grids_[i]);
-		}
-		grids_.clear();
-		grids_ = tGrids;
-		tGrids.clear();
-
-		currentOperator_ = -1;
-		currentTiles_ = std::make_pair(-1, -1);
-
-		currentSelection_ = currentSelection_ > 0 ? 1 : -1;
-	}
-
-	//=================PLACE UNARY OPERATORS BELOW THIS LINE=====================================================================================================
-
-	//Pushes a selected gridIndex to the front of the pair
-	if (gridIndices.first == -1) {
-		gridIndices.first = gridIndices.second;
-		gridIndices.second = -1;
-	}
-
-	//Flip (f) operator
-	if (gridIndices.first != -1 &&
-		opr == 'f' && std::find(operators_.begin(), operators_.end(), 'f') != operators_.end()) {
-		Grid first = grids_[gridIndices.first];
-
-		//Create the new Grid
-		Grid* outGrid = new Grid(first.width_, first.height_);
-
-		flip(first, outGrid);
-
-		grids_.push_back(*outGrid);
-		operators_.erase(std::find(operators_.begin(), operators_.end(), 'f'));
-		std::vector<Grid> tGrids;
-		for (size_t i = 0; i < grids_.size(); ++i) {
-			if(i != gridIndices.first) tGrids.push_back(grids_[i]);
-		}
-		grids_.clear();
-		grids_ = tGrids;
-		tGrids.clear();
+		grids_.push_back(outGrid);
+		operators_.erase(operators_.begin() + currentOperator_);
 
 		currentOperator_ = -1;
 		currentTiles_ = std::make_pair(-1, -1);
 	}
-
-	//Bucket (b) operator
-	if (gridIndices.first != -1 &&
-		opr == 'b' && std::find(operators_.begin(), operators_.end(), 'b') != operators_.end()) {
-		Grid first = grids_[gridIndices.first];
-
-		//Create the new Grid
-		Grid* outGrid = new Grid(first.width_, first.height_);
-
-		bucket(first, outGrid);
-
-		grids_.push_back(*outGrid);
-		operators_.erase(std::find(operators_.begin(), operators_.end(), 'b'));
-		std::vector<Grid> tGrids;
-		for (size_t i = 0; i < grids_.size(); ++i) {
-			if(i != gridIndices.first) tGrids.push_back(grids_[i]);
-		}
-		grids_.clear();
-		grids_ = tGrids;
-		tGrids.clear();
-
-		currentOperator_ = -1;
-		currentTiles_ = std::make_pair(-1, -1);
-	}
-
-	//Duplicate (d) operator
-	if (gridIndices.first != -1 &&
-		opr == 'd' && std::find(operators_.begin(), operators_.end(), 'd') != operators_.end()) {
-		Grid first = grids_[gridIndices.first];
-
-		//Create the new Grid
-		Grid* outGrid = new Grid(first.width_, first.height_);
-
-		duplicate(first, outGrid);
-
-		grids_.push_back(*outGrid);
-		operators_.erase(std::find(operators_.begin(), operators_.end(), 'd'));
-
-		currentOperator_ = -1;
-		currentTiles_ = std::make_pair(-1, -1);
-	}
-
-	//TO-DO: flip and bucket
 }
 
 void Level::inputUp() {
@@ -850,7 +800,7 @@ void Level::inputUp() {
 				currentSelection_ = grids_.size() - (currentSelection_%2==grids_.size()%2 ? 0 : 1);
 			}
 
-			if (operators_.size() == 1)
+			if (grids_.size() == 1)
 				currentSelection_ = 1;
 		}
 	}
@@ -1008,55 +958,12 @@ void Level::inputReturn() {
 		tryOperator();
 
 		if (puzzleSolved()) {
-			//name_ = "menu";
-			//loadLevel();
+			name_ = "menu";
+			DestroyLevel();
+			backups_.clear();
+			loadLevel();
 		}
 	}
-}
-
-//Merges grids a and b into out
-void Level::add(const Grid& a, const Grid& b, Grid* out) {
-	for(int i = 0; i < a.height_; ++i){
-		for(int j = 0; j < a.width_; ++j){
-			(*out).data_[i][j] = a.data_[i][j] + b.data_[i][j];
-			if((*out).data_[i][j] > 2) (*out).data_[i][j] = 2;
-		}
-	}
-}
-
-//Subtracts grid a from b absolutely (i.e. 1-2 = 1) into out
-void Level::subtract(const Grid &a, const Grid &b, Grid* out){
-	for(int i = 0; i < a.height_; ++i){
-		for(int j = 0; j < a.width_; ++j){
-			int sum = (a.data_[i][j] - b.data_[i][j]);
-			if(sum < 0) sum *= -1;
-			(*out).data_[i][j] = sum;
-		}
-	}
-}
-
-//Flips any 1s to 2s, or 2s to 1s, into out
-void Level::flip(Grid &a, Grid* out){
-	for(int i = 0; i < a.height_; ++i){
-		for(int j = 0; j < a.width_; ++j){
-			if(a.data_[i][j] == 1) (*out).data_[i][j] = 2;
-			else if(a.data_[i][j] == 2) (*out).data_[i][j] = 1;
-		}
-	} 
-}
-
-//Buckets any 0s to 1s, in a
-void Level::bucket(Grid &a, Grid *out){
-	for(int i = 0; i < a.height_; ++i){
-		for(int j = 0; j < a.width_; ++j){
-			(*out).data_[i][j] = a.data_[i][j];
-			if(a.data_[i][j] == 0) (*out).data_[i][j] = 1;
-		}
-	} 
-}
-
-void Level::duplicate(Grid &a, Grid *out){
-	out->data_ = a.data_;
 }
 
 //Loads the most previous backup
@@ -1082,10 +989,11 @@ std::string Level::getPuzzleFilepath() {
 	}
 }
 
+//Deletes dynamically allocated Operators
+void Level::DestroyLevel() {
+	Level other = backups_.front();
+	for (std::vector<Operator*>::iterator itr = other.operators_.begin(); itr != other.operators_.end(); ++itr) {
+		delete (*itr);
+	}
+}
 
-
-
-
-
-
-//

@@ -76,7 +76,7 @@ struct Grid {
 		data_(data)
 	{}
 
-	bool sameDimensions(const Grid &a) {
+	bool sameDimensions(const Grid &a) const {
 		return (width_ == a.width_ && height_ == a.height_);
 	}
 };

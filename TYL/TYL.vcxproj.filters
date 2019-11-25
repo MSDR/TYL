@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="game.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="level.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Operators.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="levelpreview.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>CPPs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="game.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="level.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="levelpreview.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Operators.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\layout.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Images\Promo.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="Images\RGSCreditPage.png">
+      <Filter>Images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\artdemo.pyxel">
+      <Filter>Images</Filter>
+    </None>
+    <None Include="Images\layout.pyxel">
+      <Filter>Images</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Levels\0_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_4.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_5.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_6.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\1_7.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\2_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\2_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\3_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\3_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\3_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\4_4.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\5_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\5_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\Puzzle Authoring Guide.txt">
+      <Filter>Levels</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{6f941acb-0a14-4177-be65-8c552bb5c0be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{9f29f340-a67a-435f-9060-9a2f444ef5e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CPPs">
+      <UniqueIdentifier>{8955e131-ea08-4f77-afda-163149d01c53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Images">
+      <UniqueIdentifier>{11c5874e-ddbd-426b-854a-4474038c5390}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

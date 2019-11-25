@@ -26,6 +26,7 @@ public:
 		operators_(level.operators_), 
 		currentOperator_(level.currentOperator_), 
 		currentTiles_(level.currentTiles_) {}
+	void DestroyLevel();
 
 	void drawLevel(Graphics &graphics);
 
@@ -53,22 +54,16 @@ private:
 	void drawPuzzleSelect(Graphics &graphics);
 
 	void drawTile(Graphics &graphics, int x, int y, const Grid &grid);
-	void drawOperator(Graphics &graphics, int x, int y, char opr);
+	void drawOperator(Graphics &graphics, int x, int y, Operator* opr);
 	void drawOperatorOutline(Graphics &graphics, int x, int y);
 	void drawTileOutline(Graphics &graphics, int x, int y, int w, int h);
 	void drawGrid(Graphics &graphics, const Grid &grid, const int x, const int y);
-
-	void add(const Grid& a, const Grid& b, Grid* out);
-	void subtract(const Grid& a, const Grid& b, Grid* out);
-	void flip(Grid& a, Grid *out);
-	void bucket(Grid& a, Grid *out);
-	void duplicate(Grid& a, Grid *out);
 
 	std::string name_;
 
 	int currentSelection_ = 0;
 	std::vector<Grid> grids_;
-	std::vector<char> operators_;
+	std::vector<Operator*> operators_;
 	std::pair<SDL_Color, SDL_Color> palette_; 
 
 	int currentOperator_;

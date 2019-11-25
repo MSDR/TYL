@@ -72,7 +72,7 @@ void Game::gameLoop() {
 						}
 					} else if(level_.getName()=="select"){
 						level_ = Level(level_.getPuzzleFilepath());
-					}
+					} 
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE)) { //Restore from backup
 					level_.undo();
