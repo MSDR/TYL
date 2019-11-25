@@ -46,6 +46,7 @@ void VortexOperator::operate(Grid* out, const Grid& a) const {
 		for(int j = 0; j < a.width_; ++j){
 			if(a.data_[i][j] == c1_) (*out).data_[i][j] = c2_;
 			else if(a.data_[i][j] == c2_) (*out).data_[i][j] = c1_;
+			else (*out).data_[i][j] = a.data_[i][j];
 		}
 	} 
 }
@@ -62,6 +63,7 @@ void BucketOperator::operate(Grid* out, const Grid& a) const {
 		for(int j = 0; j < a.width_; ++j){
 			(*out).data_[i][j] = a.data_[i][j];
 			if(a.data_[i][j] == c1_) (*out).data_[i][j] = c2_;
+			else (*out).data_[i][j] = a.data_[i][j];
 		}
 	} 
 }
@@ -81,9 +83,9 @@ void DuplicateOperator::operate(Grid* out, const Grid& a) const {
 Grid MirrorOperator::grid() const {
 	Grid mir(5, 5);
 	if (isVertical_)
-		mir.data_ = { {1, 1, 0, 1, 1}, {1, 2, 0, 2, 1}, {2, 2, 0, 2, 2}, {1, 2, 0, 2, 1}, {1, 1, 0, 1, 1} };
-	else
 		mir.data_ = { {1, 1, 2, 1, 1}, {1, 2, 2, 2, 1}, {0, 0, 0, 0, 0}, {1, 2, 2, 2, 1}, {1, 1, 2, 1, 1} };
+	else
+		mir.data_ = { {1, 1, 0, 1, 1}, {1, 2, 0, 2, 1}, {2, 2, 0, 2, 2}, {1, 2, 0, 2, 1}, {1, 1, 0, 1, 1} };
 	return mir;
 
 }

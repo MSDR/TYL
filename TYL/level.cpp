@@ -147,32 +147,6 @@ bool Level::loadLevel(int inRow, int inCol) {
 	}
 
 	globals::SPRITE_SCALE = std::max(20 - (int)std::pow(maxDim, .8), 4);
-
-	//Level 1 - to be loaded in a class from a file
-	/*{
-		solution_ = Grid(4, 4);
-		solution_.data_ = { {2, 0, 0, 2}, {0, 2, 2, 0}, {0, 2, 2, 0}, {2, 0, 0, 2}};
-		operators_ = { '+', 'f', '-', '+'};
-
-		std::vector<std::vector<int>> a = { {1, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0} };
-		std::vector<std::vector<int>> b = { {0, 0, 0, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 0, 0, 1} };
-		std::vector<std::vector<int>> c = { {0, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 1, 0}, {0, 0, 0, 0} };
-		std::vector<std::vector<int>> d = { {0, 0, 0, 0}, {0, 1, 1, 0}, {0, 1, 0, 0}, {0, 0, 0, 0} };
-		grids_.push_back(Grid(a));
-		grids_.push_back(Grid(b));
-		grids_.push_back(Grid(c));
-		grids_.push_back(Grid(d));
-
-		palette_.first.r = 255;
-		palette_.first.g = 255;
-		palette_.first.b = 255;
-		palette_.first.a = 255;
-
-		palette_.second.r = 45;
-		palette_.second.g = 124;
-		palette_.second.b = 249;
-		palette_.second.a = 255;
-	}*/
 	return true;
 }
 
