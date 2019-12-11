@@ -4,10 +4,14 @@
 #include "graphics.h"
 
 Graphics::Graphics() {
-	SDL_CreateWindowAndRenderer(globals::SCREEN_WIDTH * globals::SPRITE_SCALE, globals::SCREEN_HEIGHT * globals::SPRITE_SCALE,
+	SDL_CreateWindowAndRenderer(globals::WINDOW_WIDTH, globals::WINDOW_HEIGHT,
 								0, &window_, &renderer_);
 	SDL_SetWindowTitle(window_, "TYL");
-	SDL_SetWindowBordered(window_, SDL_FALSE);
+	SDL_SetWindowFullscreen(window_, SDL_TRUE);
+	SDL_DisplayMode DM;
+	SDL_GetWindowDisplayMode(0, &DM);
+	globals::WINDOW_WIDTH = DM.w;
+	globals::WINDOW_HEIGHT =  DM.h;
 }
 
 Graphics::~Graphics() {

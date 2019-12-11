@@ -180,6 +180,13 @@
     <Text Include="Levels\4_4.txt" />
     <Text Include="Levels\5_0.txt" />
     <Text Include="Levels\5_1.txt" />
+    <Text Include="Levels\6_0.txt" />
+    <Text Include="Levels\7_0.txt" />
+    <Text Include="Levels\7_1.txt" />
+    <Text Include="Levels\7_2.txt" />
+    <Text Include="Levels\7_3.txt" />
+    <Text Include="Levels\7_4.txt" />
+    <Text Include="Levels\8_0.txt" />
     <Text Include="Levels\Puzzle Authoring Guide.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

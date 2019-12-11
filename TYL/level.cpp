@@ -17,8 +17,6 @@ bool Level::loadLevel(int inRow, int inCol) {
 		palette_.second.b = 249;
 		palette_.second.a = 255;
 
-		globals::SPRITE_SCALE = 14;
-
 		return true;
 	}
 
@@ -66,7 +64,7 @@ bool Level::loadLevel(int inRow, int inCol) {
 
 	while (lineReader >> word) {
 		char opr = word[0];
-		std::cout << " " << opr;
+
 		if (opr == '+') {        //PLUS
 			operators_.push_back(new PlusOperator());
 		} else if (opr == '-') { //MINUS
@@ -146,8 +144,29 @@ bool Level::loadLevel(int inRow, int inCol) {
 		linePos++;
 	}
 
-	globals::SPRITE_SCALE = std::max(20 - (int)std::pow(maxDim, .8), 4);
+	//globals::SPRITE_SCALE = std::max(20 - (int)std::pow(maxDim, .8), 4);
 	return true;
+}
+
+void Level::adjustSpriteScale() {
+	if (name_ == "menu" || name_ == "select") {
+		globals::SPRITE_SCALE = 14;
+		return;
+	}
+
+	//Find SPRITE_SCALE from vertical spacing
+	globals::SPRITE_SCALE = (200+(globals::HEIGHT_MIDP/(2)))/(21+grids_[0].height_);
+
+	//Find SPRITE_SCALE from horizontal spacing
+	int o = operators_.size() - (operators_.size()%2==1 ? 2 : 1);
+	int x = (globals::WIDTH_MIDP) - 12*(o>=1 ? o-(o/2) : 0)*globals::SPRITE_SCALE*(o%2==1 ? 1 : -1) - 5*globals::SPRITE_SCALE + 
+		(operators_.size()%2==0 ? 6 : 0)*globals::SPRITE_SCALE;
+
+	while (x < 70) {
+		x = (globals::WIDTH_MIDP) - 12*(o>=1 ? o-(o/2) : 0)*globals::SPRITE_SCALE*(o%2==1 ? 1 : -1) - 5*globals::SPRITE_SCALE + 
+			(operators_.size()%2==0 ? 6 : 0)*globals::SPRITE_SCALE;
+		globals::SPRITE_SCALE -= .5;
+	}
 }
 
 //Draws tiles, operators, and everything else needed to see the game
@@ -167,8 +186,8 @@ void Level::drawLevel(Graphics &graphics) {
 
 	//Draw bar above current selection
 	{
-		r.x = 960-22*globals::SPRITE_SCALE;
-		r.y = 540-globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP)-22*globals::SPRITE_SCALE;
+		r.y = (globals::HEIGHT_MIDP)-globals::SPRITE_SCALE;
 		r.w = 44*globals::SPRITE_SCALE;
 		r.h = 2*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
@@ -177,14 +196,14 @@ void Level::drawLevel(Graphics &graphics) {
 		r.h = 3*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-		r.x = 960+22*globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP)+22*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 	}
 
 	//Draw bar below current selection
 	{
-		r.x = 960 - 16*globals::SPRITE_SCALE;
-		r.y = 540 + 16*globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP) - 16*globals::SPRITE_SCALE;
+		r.y = (globals::HEIGHT_MIDP) + 16*globals::SPRITE_SCALE;
 		r.w = 33*globals::SPRITE_SCALE;
 		r.h = 2*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
@@ -199,9 +218,9 @@ void Level::drawLevel(Graphics &graphics) {
 	}
 
 	//Draw solution
-	drawTile(graphics, 960-solution_.width_*.5*globals::SPRITE_SCALE - (solution_.width_%2==1 ? 2 : 1.5)*globals::SPRITE_SCALE, 540+20*globals::SPRITE_SCALE, solution_);
+	drawTile(graphics, (globals::WIDTH_MIDP)-solution_.width_*.5*globals::SPRITE_SCALE - (solution_.width_%2==1 ? 2 : 1.5)*globals::SPRITE_SCALE, (globals::HEIGHT_MIDP)+20*globals::SPRITE_SCALE, solution_);
 
-	int maxX = 960;
+	int maxX = (globals::WIDTH_MIDP);
 
 	//Copy only available operators to be drawn
 	std::vector<Operator*> oprs;
@@ -215,10 +234,10 @@ void Level::drawLevel(Graphics &graphics) {
 
 	//Draw available operators
 	for(int o = 0; o < oprs.size(); ++o) {
-		int x = 960 - 12*(o>=1 ? o-(o/2) : 0)*globals::SPRITE_SCALE*(o%2==1 ? 1 : -1) - 5*globals::SPRITE_SCALE + 
+		int x = (globals::WIDTH_MIDP) - 12*(o>=1 ? o-(o/2) : 0)*globals::SPRITE_SCALE*(o%2==1 ? 1 : -1) - 5*globals::SPRITE_SCALE + 
 			(oprs.size()%2==0 ? 6 : 0)*globals::SPRITE_SCALE;
 		if (x < maxX) maxX = x;
-		int y = 540 - 11*globals::SPRITE_SCALE;
+		int y = (globals::HEIGHT_MIDP) - 11*globals::SPRITE_SCALE;
 
 		if(o==(currentSelection_*-1)-1)
 			SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
@@ -238,10 +257,10 @@ void Level::drawLevel(Graphics &graphics) {
 
 	//Draw available tiles
 	for(int o = 0; o < tiles.size(); ++o){
-		int x = 960 - (o>=1 ? (7+tiles[o].width_)*(o-(o/2)) : 0)*globals::SPRITE_SCALE*(o%2==1 ? 1 : -1) +
+		int x = (globals::WIDTH_MIDP) - (o>=1 ? (7+tiles[o].width_)*(o-(o/2)) : 0)*globals::SPRITE_SCALE*(o%2==1 ? 1 : -1) +
 			(tiles.size()%2==0 ? 2 : -(tiles[o].width_*.5 + 2 - (tiles[o].width_%2==0 ? .5 : .5)))*globals::SPRITE_SCALE;
 		if (x < maxX) maxX = x;
-		int y = 540 - (21+tiles[o].height_)*globals::SPRITE_SCALE;
+		int y = (globals::HEIGHT_MIDP) - (21+tiles[o].height_)*globals::SPRITE_SCALE;
 
 		if(o==currentSelection_-1)
 			SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
@@ -254,7 +273,7 @@ void Level::drawLevel(Graphics &graphics) {
 	//Draw currentOperator_
 	if(currentOperator_ != -1) {
 		SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
-		drawOperator(graphics, 960-5*globals::SPRITE_SCALE, 540+5*globals::SPRITE_SCALE, operators_[currentOperator_]);
+		drawOperator(graphics, (globals::WIDTH_MIDP)-5*globals::SPRITE_SCALE, (globals::HEIGHT_MIDP)+5*globals::SPRITE_SCALE, operators_[currentOperator_]);
 		delete oprs[currentOperator_];
 	}
 
@@ -262,14 +281,14 @@ void Level::drawLevel(Graphics &graphics) {
 	{
 		SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
 		if (currentTiles_.first != -1) {
-			drawTile(graphics, 960-(10+grids_[currentTiles_.first].width_)*globals::SPRITE_SCALE,
-				540+5*globals::SPRITE_SCALE - (grids_[currentTiles_.first].height_%2==0 ? .5 : 1)*globals::SPRITE_SCALE, 
+			drawTile(graphics, (globals::WIDTH_MIDP)-(10+grids_[currentTiles_.first].width_)*globals::SPRITE_SCALE,
+				(globals::HEIGHT_MIDP)+5*globals::SPRITE_SCALE - (grids_[currentTiles_.first].height_%2==0 ? .5 : 1)*globals::SPRITE_SCALE, 
 				grids_[currentTiles_.first]);
 		}
 		SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
 		if (currentTiles_.second != -1) {
-			drawTile(graphics, 960+7*globals::SPRITE_SCALE, 
-				540+5*globals::SPRITE_SCALE - (grids_[currentTiles_.second].height_%2==0 ? .5 : 1)*globals::SPRITE_SCALE, 
+			drawTile(graphics, (globals::WIDTH_MIDP)+7*globals::SPRITE_SCALE, 
+				(globals::HEIGHT_MIDP)+5*globals::SPRITE_SCALE - (grids_[currentTiles_.second].height_%2==0 ? .5 : 1)*globals::SPRITE_SCALE, 
 				grids_[currentTiles_.second]);
 		}
 	}
@@ -278,8 +297,8 @@ void Level::drawLevel(Graphics &graphics) {
 	{
 		SDL_SetRenderDrawColor(graphics.getRenderer(), 115, 115, 115, 255);
 		r.x = maxX - 3*globals::SPRITE_SCALE;
-		r.y = 540 - 15*globals::SPRITE_SCALE;
-		r.w = (960-maxX)*2 + 6*globals::SPRITE_SCALE;
+		r.y = (globals::HEIGHT_MIDP) - 15*globals::SPRITE_SCALE;
+		r.w = ((globals::WIDTH_MIDP)-maxX)*2 + 6*globals::SPRITE_SCALE;
 		r.h = globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
@@ -288,7 +307,7 @@ void Level::drawLevel(Graphics &graphics) {
 		r.h = 3*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-		r.x = 960+(960-maxX) + 3*globals::SPRITE_SCALE;;
+		r.x = (globals::WIDTH_MIDP)+((globals::WIDTH_MIDP)-maxX) + 3*globals::SPRITE_SCALE;;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 	}
 }
@@ -301,8 +320,8 @@ void Level::drawMenu(Graphics &graphics) {
 
 	//Draw bar above quit
 	{
-		r.x = 960-22*globals::SPRITE_SCALE;
-		r.y = 540-globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP)-22*globals::SPRITE_SCALE;
+		r.y = (globals::HEIGHT_MIDP)-globals::SPRITE_SCALE;
 		r.w = 44*globals::SPRITE_SCALE;
 		r.h = 2*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
@@ -311,14 +330,14 @@ void Level::drawMenu(Graphics &graphics) {
 		r.h = 3*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-		r.x = 960+22*globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP)+22*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 	}
 
 	//Draw bar below quit
 	{
-		r.x = 960 - 16*globals::SPRITE_SCALE;
-		r.y = 540 + 16*globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP) - 16*globals::SPRITE_SCALE;
+		r.y = (globals::HEIGHT_MIDP) + 16*globals::SPRITE_SCALE;
 		r.w = 33*globals::SPRITE_SCALE;
 		r.h = 2*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
@@ -334,8 +353,8 @@ void Level::drawMenu(Graphics &graphics) {
 
 	//Draw bar btw puzzle select and options
 	{
-		r.x = 960 - 29.5*globals::SPRITE_SCALE;
-		r.y = 540 - 15*globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP) - 29.5*globals::SPRITE_SCALE;
+		r.y = (globals::HEIGHT_MIDP) - 15*globals::SPRITE_SCALE;
 		r.w = (29*globals::SPRITE_SCALE)*2;
 		r.h = globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
@@ -345,7 +364,7 @@ void Level::drawMenu(Graphics &graphics) {
 		r.h = 3*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-		r.x = 960+28.5*globals::SPRITE_SCALE;
+		r.x = (globals::WIDTH_MIDP)+28.5*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 	}
 
@@ -363,7 +382,7 @@ void Level::drawMenu(Graphics &graphics) {
 			{ 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0 },
 			{ 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0 }
 		};
-		drawTile(graphics, 960-26.5*globals::SPRITE_SCALE, 540 - 27*globals::SPRITE_SCALE, puzzleSelect);
+		drawTile(graphics, (globals::WIDTH_MIDP)-26.5*globals::SPRITE_SCALE, (globals::HEIGHT_MIDP) - 27*globals::SPRITE_SCALE, puzzleSelect);
 	}
 
 	//Draw OPTIONS
@@ -380,7 +399,7 @@ void Level::drawMenu(Graphics &graphics) {
 			{ 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1 },
 			{ 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1 }
 		};
-		drawTile(graphics, 960-15.5*globals::SPRITE_SCALE, 540 - 11.5*globals::SPRITE_SCALE, options);
+		drawTile(graphics, (globals::WIDTH_MIDP)-15.5*globals::SPRITE_SCALE, (globals::HEIGHT_MIDP) - 11.5*globals::SPRITE_SCALE, options);
 	}
 
 	//Draw QUIT
@@ -397,7 +416,7 @@ void Level::drawMenu(Graphics &graphics) {
 			{ 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0 },
 			{ 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0 }
 		};
-		drawTile(graphics, 960- 9.5*globals::SPRITE_SCALE, 540 + 5*globals::SPRITE_SCALE, quit);
+		drawTile(graphics, (globals::WIDTH_MIDP)- 9.5*globals::SPRITE_SCALE, (globals::HEIGHT_MIDP) + 5*globals::SPRITE_SCALE, quit);
 	}
 
 	//Draw TYL
@@ -415,8 +434,8 @@ void Level::drawMenu(Graphics &graphics) {
 			{ 0, 1, 0, 2, 2, 2, 1, 0, 0 },
 			{ 0, 1, 0, 0, 2, 0, 1, 1, 1 }
 		};
-		drawTile(graphics, 960-solution_.width_*.5*globals::SPRITE_SCALE - (solution_.width_%2==1 ? 2 : 1.5)*globals::SPRITE_SCALE, 
-			540+20*globals::SPRITE_SCALE, solution_);
+		drawTile(graphics, (globals::WIDTH_MIDP)-solution_.width_*.5*globals::SPRITE_SCALE - (solution_.width_%2==1 ? 2 : 1.5)*globals::SPRITE_SCALE, 
+			(globals::HEIGHT_MIDP)+20*globals::SPRITE_SCALE, solution_);
 	}
 }
 
@@ -429,9 +448,9 @@ void Level::drawPuzzleSelect(Graphics & graphics) {
 
 	//Draw currently selected row
 	for (int j = 0; j < previews_[currentTiles_.first].size(); ++j) {
-		int x = 960 - (j>=1 ? (7+previews_[currentTiles_.first][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
+		int x = (globals::WIDTH_MIDP) - (j>=1 ? (7+previews_[currentTiles_.first][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
 			(previews_[currentTiles_.first].size()%2==0 ? 2 : -(previews_[currentTiles_.first][j].getWidth()*.5 + 2 - (previews_[currentTiles_.first][j].getWidth()%2==0 ? .5 : .5)))*globals::SPRITE_SCALE;
-		int y = 540 + offsetY;
+		int y = (globals::HEIGHT_MIDP) + offsetY;
 
 		if (j == currentTiles_.second)
 			SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
@@ -446,9 +465,9 @@ void Level::drawPuzzleSelect(Graphics & graphics) {
 		for (int i = currentTiles_.first-1; i >= 0; --i) {
 			offsetY -= (2 + previews_[i][0].getHeight() + 4)*globals::SPRITE_SCALE;
 			for (int j = 0; j < previews_[i].size(); ++j) {
-				int x = 960 - (j>=1 ? (7+previews_[i][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
+				int x = (globals::WIDTH_MIDP) - (j>=1 ? (7+previews_[i][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
 					(previews_[i].size()%2==0 ? 2 : -(previews_[i][j].getWidth()*.5 + 2 - (previews_[i][j].getWidth()%2==0 ? .5 : .5)))*globals::SPRITE_SCALE;
-				int y = 540 + offsetY;
+				int y = (globals::HEIGHT_MIDP) + offsetY;
 
 				if (i == currentTiles_.first && j == currentTiles_.second)
 					SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
@@ -466,9 +485,9 @@ void Level::drawPuzzleSelect(Graphics & graphics) {
 	if(currentTiles_.first+1 < previews_.size()){
 		for (int i = currentTiles_.first+1; i < previews_.size(); ++i) {
 			for (int j = 0; j < previews_[i].size(); ++j) {
-				int x = 960 - (j>=1 ? (7+previews_[i][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
+				int x = (globals::WIDTH_MIDP) - (j>=1 ? (7+previews_[i][j].getWidth())*(j-(j/2)) : 0)*globals::SPRITE_SCALE*(j%2==1 ? 1 : -1) +
 					(previews_[i].size()%2==0 ? 2 : -(previews_[i][j].getWidth()*.5 + 2 - (previews_[i][j].getWidth()%2==0 ? .5 : .5)))*globals::SPRITE_SCALE;
-				int y = 540 + offsetY;
+				int y = (globals::HEIGHT_MIDP) + offsetY;
 
 				if (i == currentTiles_.first && j == currentTiles_.second)
 					SDL_SetRenderDrawColor(graphics.getRenderer(), 255, 255, 255, 255);
@@ -501,15 +520,15 @@ void Level::drawOperator(Graphics &graphics, int x, int y, Operator* opr) {
 		r.h = 7*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
-		r.x += 2*globals::SPRITE_SCALE;
+		r.x += 1*globals::SPRITE_SCALE;
 		r.y -= 1*globals::SPRITE_SCALE;
-		r.w = 7 * globals::SPRITE_SCALE;
+		r.w = 9 * globals::SPRITE_SCALE;
 		r.h = 9*globals::SPRITE_SCALE;
 		SDL_RenderFillRect(graphics.getRenderer(), &r);
 
 		SDL_SetRenderDrawColor(graphics.getRenderer(), 0, 0, 0, 255);
 
-		r.x += globals::SPRITE_SCALE;
+		r.x += 2*globals::SPRITE_SCALE;
 		r.y += globals::SPRITE_SCALE;
 		r.w = 5*globals::SPRITE_SCALE;
 		r.h = 7*globals::SPRITE_SCALE;
@@ -657,8 +676,8 @@ void Level::drawGrid(Graphics &graphics, const Grid &grid, const int x, const in
 }
 
 //Uses whatever operators and tiles are currently entered
-void Level::tryOperator() {
-	if (currentOperator_ == -1) return; //No operator selected
+bool Level::tryOperator() {
+	if (currentOperator_ == -1) return false; //No operator selected
 
 	Operator* opr = operators_[currentOperator_];
 
@@ -667,12 +686,12 @@ void Level::tryOperator() {
 			currentTiles_.first = currentTiles_.second;
 			currentTiles_.second = -1;
 		}
-		if (currentTiles_.first == -1) return; //No tile selected
+		if (currentTiles_.first == -1 || currentTiles_.second != -1) return false; //No tile selected
 
 		Grid first = grids_[currentTiles_.first];
 
 		//Create the new Grid
-		Grid outGrid = Grid(first.width_, first.height_);
+		Grid outGrid;
 
 		opr->operate(&outGrid, first);
 
@@ -691,8 +710,9 @@ void Level::tryOperator() {
 
 		currentOperator_ = -1;
 		currentTiles_ = std::make_pair(-1, -1);
+		return true;
 	} else if (opr->type() == BINARY){
-		if (currentTiles_.first == -1 || currentTiles_.second == -1) return; //No tile selected
+		if (currentTiles_.first == -1 || currentTiles_.second == -1) return false; //No tile selected
 
 		//Set up iterators
 		std::vector<Grid>::iterator first = grids_.begin();
@@ -701,7 +721,7 @@ void Level::tryOperator() {
 		second = second + currentTiles_.second;
 
 		//Create the new Grid
-		Grid outGrid = Grid((*first).width_, (*first).height_);
+		Grid outGrid;
 
 		//Perform the operation
 		opr->operate(&outGrid, *first, *second);
@@ -724,13 +744,14 @@ void Level::tryOperator() {
 		currentTiles_ = std::make_pair(-1, -1);
 
 		currentSelection_ = currentSelection_ > 0 ? 1 : -1;
+		return true;
 	} else if (opr->type() == DUPLICATORY) {
-		if (currentTiles_.first == -1) return;
+		if (currentTiles_.first == -1) return false;
 
 		Grid first = grids_[currentTiles_.first];
 
 		//Create the new Grid
-		Grid outGrid = Grid(first.width_, first.height_);
+		Grid outGrid;
 
 		opr->operate(&outGrid, first);
 
@@ -739,6 +760,7 @@ void Level::tryOperator() {
 
 		currentOperator_ = -1;
 		currentTiles_ = std::make_pair(-1, -1);
+		return true;
 	}
 }
 
@@ -929,7 +951,7 @@ void Level::inputReturn() {
 			inputUp();
 		}
 
-		tryOperator();
+		if (tryOperator()) redos_.clear();
 
 		if (puzzleSolved()) {
 			name_ = "menu";
@@ -944,6 +966,7 @@ void Level::inputReturn() {
 void Level::undo() {
 	if (backups_.size() == 0) return;
 
+	redoBackup();
 	Level other = backups_.back();
 	//currentSelection_ = other.currentSelection_;
 	grids_ = other.grids_;
@@ -952,6 +975,20 @@ void Level::undo() {
 	currentTiles_ = other.currentTiles_;
 
 	backups_.pop_back();
+}
+
+void Level::redo() {
+	if (redos_.size() == 0) return;
+
+	backup();
+	Level other = redos_.back();
+	//currentSelection_ = other.currentSelection_;
+	grids_ = other.grids_;
+	operators_ = other.operators_;
+	currentOperator_ = other.currentOperator_;
+	currentTiles_ = other.currentTiles_;
+
+	redos_.pop_back();
 }
 
 std::string Level::getPuzzleFilepath() {

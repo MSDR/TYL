@@ -8,6 +8,7 @@ Grid PlusOperator::grid() const {
 }
 #include <iostream>
 void PlusOperator::operate(Grid* out, const Grid& a, const Grid& b) const {
+	*out = Grid(a.width_, a.height_);
 	for(int i = 0; i < a.height_; ++i){
 		for(int j = 0; j < a.width_; ++j){
 			(*out).data_[i][j] = a.data_[i][j] + b.data_[i][j];
@@ -25,6 +26,7 @@ Grid MinusOperator::grid() const {
 }
 
 void MinusOperator::operate(Grid* out, const Grid& a, const Grid& b) const {
+	*out = Grid(a.width_, a.height_);
 	for(int i = 0; i < a.height_; ++i){
 		for(int j = 0; j < a.width_; ++j){
 			int sum = (a.data_[i][j] - b.data_[i][j]);
@@ -42,6 +44,7 @@ Grid VortexOperator::grid() const {
 }
 
 void VortexOperator::operate(Grid* out, const Grid& a) const {
+	*out = Grid(a.width_, a.height_);
 	for(int i = 0; i < a.height_; ++i){
 		for(int j = 0; j < a.width_; ++j){
 			if(a.data_[i][j] == c1_) (*out).data_[i][j] = c2_;
@@ -59,6 +62,7 @@ Grid BucketOperator::grid() const {
 }
 
 void BucketOperator::operate(Grid* out, const Grid& a) const {
+	*out = Grid(a.width_, a.height_);
 	for(int i = 0; i < a.height_; ++i){
 		for(int j = 0; j < a.width_; ++j){
 			(*out).data_[i][j] = a.data_[i][j];
@@ -76,6 +80,7 @@ Grid DuplicateOperator::grid() const {
 }
 
 void DuplicateOperator::operate(Grid* out, const Grid& a) const {
+	*out = Grid(a.width_, a.height_);
 	out->data_ = a.data_;
 }
 
@@ -91,6 +96,7 @@ Grid MirrorOperator::grid() const {
 }
 
 void MirrorOperator::operate(Grid* out, const Grid& a) const {
+	*out = Grid(a.width_, a.height_);
 	if (!a.sameDimensions(*out)) return;
 	for(int i = 0; i < a.height_; ++i){
 		for(int j = 0; j < a.width_; ++j){

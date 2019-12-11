@@ -19,8 +19,8 @@
 
 class Level {
 public:
-	Level() : name_("menu") { loadLevel(); }
-	Level(std::string name, int row = 0, int col = 0) : name_(name) { loadLevel(row, col); }
+	Level() : name_("menu") { loadLevel(); adjustSpriteScale(); }
+	Level(std::string name, int row = 0, int col = 0) : name_(name) { loadLevel(row, col); adjustSpriteScale();}
 	Level(const Level &level) : 
 		grids_(level.grids_),
 		operators_(level.operators_), 
@@ -30,7 +30,7 @@ public:
 
 	void drawLevel(Graphics &graphics);
 
-	void tryOperator();
+	bool tryOperator();
 
 	void inputUp();
 	void inputDown();
@@ -39,7 +39,9 @@ public:
 	void inputReturn();
 
 	void undo();
+	void redo();
 	void backup() { backups_.push_back(Level(*this)); }
+	void redoBackup() { redos_.push_back(Level(*this)); }
 
 	bool puzzleSolved() { return (grids_.size() == 1 && grids_[0].data_ == solution_.data_); }
 
@@ -49,6 +51,8 @@ public:
 
 private:
 	bool loadLevel(int inRow = 0, int inCol = 0);
+
+	void adjustSpriteScale();
 
 	void drawMenu(Graphics &graphics);
 	void drawPuzzleSelect(Graphics &graphics);
@@ -70,9 +74,11 @@ private:
 	std::pair<int, int> currentTiles_;
 	Grid solution_;
 	std::list<Level> backups_;
+	std::list<Level> redos_; //Redos get cleared when tryOperator() is successful
 
 	std::map<int, std::vector<LevelPreview> > previews_;
 	//change input to work with currentTiles_
 	//drawPuzzleSelect to draw previews_
 };
+
 #endif 

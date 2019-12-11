@@ -1,15 +1,15 @@
 To add a new level, put it in the Levels folder with filename [row]_[col].txt
  [row] should be sequential: if the levels go up to row 6, the next row should be 7.
  [col] is also sequential, starting at 0.
+ Both of these are just numbers.
  
- If any rows or cols are skipped, the level will not be read by TYL.
-__________________________________________________________________________________________
+ If any rows or cols are skipped, the level will not be recognized by TYL.
+_____________________________________________________________________________________________
 
 Levels are in the following format:
 [operators]
 
 [color1]
-
 [color2]
 
 [solution grid]
@@ -24,22 +24,23 @@ Levels are in the following format:
 .
 .
 >
-__________________________________________________________________________________________
+_____________________________________________________________________________________________
 
 [operators] should be a series of characters, separated by spaces:
 +       plus
 -       minus
-v[1][2] vortex -- [1] and [2] are placeholders for layers. Can be 0, 1, or 2.
-b[1][2] bucket -- [1] and [2] are placeholders for layers. Can be 0, 1, or 2.
+vxy vortex -- x and y are placeholders for layers. Can be 0, 1, or 2.
+bxy bucket -- x and y are placeholders for layers. Can be 0, 1, or 2.
 d       duplicate
 mh      horizontal mirror
 mv      vertical mirror
-__________________________________________________________________________________________
+_____________________________________________________________________________________________
 
 A color is a series of 4 values, 0-255, representing RGBA
 Separate these numbers with spaces.
 You'll probably want the A value to be 255, otherwise the color will look faded.
-__________________________________________________________________________________________
+It's recommended that color 1 be brighter than color 2, and that colors have decent contrast.
+_____________________________________________________________________________________________
 
 Here's an example 3x3 grid:
 
@@ -48,10 +49,10 @@ Here's an example 3x3 grid:
 010
 
 Make sure to place a '>' after each grid.
-__________________________________________________________________________________________
-Complete Level example:
+_____________________________________________________________________________________________
+Complete Level example (this is level 4_3.txt):
 
-v12 + + - b01
+v12 - + - b01
 
 255 255 255 255
 45 125 249 255

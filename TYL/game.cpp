@@ -77,11 +77,14 @@ void Game::gameLoop() {
 				if (input.wasKeyPressed(SDL_SCANCODE_BACKSPACE)) { //Restore from backup
 					level_.undo();
 				}
-				if (input.wasKeyPressed(SDL_SCANCODE_EQUALS)) {
-					globals::SPRITE_SCALE++;
+				if (input.wasKeyPressed(SDL_SCANCODE_RCTRL)) { //Restore from backup
+					level_.redo();
 				}
-				if (input.wasKeyPressed(SDL_SCANCODE_MINUS)) {
-					globals::SPRITE_SCALE--;
+				if (input.wasKeyPressed(SDL_SCANCODE_X)) {
+					globals::SPRITE_SCALE += 1.0;
+				}
+				if (input.wasKeyPressed(SDL_SCANCODE_Z)) {
+					globals::SPRITE_SCALE += 1.0;
 				}
 				if (input.wasKeyPressed(SDL_SCANCODE_ESCAPE)) {
 					if (creditsPage_) {

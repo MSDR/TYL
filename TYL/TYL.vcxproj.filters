@@ -141,6 +141,27 @@
     <Text Include="Levels\Puzzle Authoring Guide.txt">
       <Filter>Levels</Filter>
     </Text>
+    <Text Include="Levels\6_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\7_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\7_1.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\7_2.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\7_3.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\7_4.txt">
+      <Filter>Levels</Filter>
+    </Text>
+    <Text Include="Levels\8_0.txt">
+      <Filter>Levels</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Levels">

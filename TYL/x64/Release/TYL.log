@@ -1,12 +1,149 @@
-﻿  Operators.cpp
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(9): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(9): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(10): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(10): warning C4244: 'initializing': conversion from 'float' to 'const int', possible loss of data
-c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(77): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  level.cpp
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\globals.h(81): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(133): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(135): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(158): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(161): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(162): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(166): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(189): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(190): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(191): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(192): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(195): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(196): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(199): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(205): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(206): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(207): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(208): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(211): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(212): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(213): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(216): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(221): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(221): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(237): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(240): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(260): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(263): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(276): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(285): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(284): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(291): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(290): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(299): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(300): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(301): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(302): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(305): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(306): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(307): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(310): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(323): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(324): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(325): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(326): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(329): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(330): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(333): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(339): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(340): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(341): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(342): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(345): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(346): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(347): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(350): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(356): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(357): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(358): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(359): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(362): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(363): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(364): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(367): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(385): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(385): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(402): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(419): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(419): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(438): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(437): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(447): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(451): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(466): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(468): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(482): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(488): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(499): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(519): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(520): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(523): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(524): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(525): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(526): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(531): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(532): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(533): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(534): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(537): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(538): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(539): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(540): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(546): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(559): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(560): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(563): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(564): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(565): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(566): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(571): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(572): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(573): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(574): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(577): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(578): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(579): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(580): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(583): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(584): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(585): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(586): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(596): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(603): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(604): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(608): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(614): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(615): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(619): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(622): warning C4244: 'argument': conversion from 'float' to 'const int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(637): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(638): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(642): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(644): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(647): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(648): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(649): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(650): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(668): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(669): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(670): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(671): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(774): warning C4267: '=': conversion from 'size_t' to '_Ty1', possible loss of data
+          with
+          [
+              _Ty1=int
+          ]
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(778): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(787): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(796): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(816): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(830): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mason\documents\visual studio 2017\projects\tyl\tyl\level.cpp(880): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating code
-  1 of 1370 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 1356 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   TYL.vcxproj -> C:\Users\Mason\Documents\Visual Studio 2017\Projects\TYL\x64\Release\TYL.exe

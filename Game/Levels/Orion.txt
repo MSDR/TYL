@@ -1,0 +1,47 @@
+constellation   Orion
+star   590.61   702.67    0.18    Rigel
+star   415.19   431.75    0.42    Betelgeuse
+star   545.15   450.33    1.64    Bellatrix
+star   497.09   582.08    1.69    Alnilam
+star   477.27   594.94    1.88    Alnitak_A
+star   447.51   727.86    2.07    Saiph
+star   515.45   566.36    2.20    Mintaka_AB
+star   696.67   438.53    3.19    π^3_Ori
+star   548.24   602.78    3.35    η_Ori
+star   501.76   388.05    3.47    Meissa_A
+star   691.35   462.24    3.68    π^4_Ori
+star   679.05   517.61    3.71    π^5_Ori
+star   665.39   325.34    4.06    ο^2_Ori
+star   384.82   392.61    4.12    μ_Ori
+star   692.47   404.84    4.35    π^2_Ori
+star   422.99   211.28    4.39    χ^1_Ori
+star   365.32   304.13    4.42    ν_Ori
+star   346.71   313.55    4.45    ξ_Ori
+star   660.66   530.48    4.47    π^6_Ori
+star   673.69   383.34    4.64    π^1_Ori
+star   384.07   213.34    4.64    χ^2_Ori
+star   629.91   293.30    4.65    11_Ori
+line   11_Ori   ο^2_Ori
+line   Alnilam   Alnitak_A
+line   Alnilam   Mintaka_AB
+line   Alnitak_A   Betelgeuse
+line   Alnitak_A   Saiph
+line   Bellatrix   Betelgeuse
+line   Bellatrix   Meissa_A
+line   Bellatrix   Mintaka_AB
+line   Bellatrix   π^3_Ori
+line   Betelgeuse   Meissa_A
+line   Betelgeuse   μ_Ori
+line   Mintaka_AB   η_Ori
+line   Rigel   η_Ori
+line   μ_Ori   ξ_Ori
+line   ν_Ori   ξ_Ori
+line   ν_Ori   χ^1_Ori
+line   ξ_Ori   χ^2_Ori
+line   ο^2_Ori   π^1_Ori
+line   π^1_Ori   π^2_Ori
+line   π^2_Ori   π^3_Ori
+line   π^3_Ori   π^4_Ori
+line   π^4_Ori   π^5_Ori
+line   π^5_Ori   π^6_Ori
+line   χ^1_Ori   χ^2_Ori

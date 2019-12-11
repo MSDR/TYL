@@ -6,8 +6,12 @@
 namespace globals {
 	static float SPRITE_SCALE = 14;
 
-	const int SCREEN_WIDTH = 1920/SPRITE_SCALE;
-	const int SCREEN_HEIGHT = 1080/SPRITE_SCALE;
+	static int WINDOW_WIDTH = 1920;
+	static int WINDOW_HEIGHT = 1080;
+	static int WIDTH_MIDP = 1920/2;
+	static int HEIGHT_MIDP = 1080/2;
+
+
 }
 
 namespace sides {
